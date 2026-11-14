@@ -41,7 +41,7 @@
     }
 
     // 2. Portfolio Filter Tabs (ALL, VIDEO, PHOTO, BRANDING, MUSIC)
-    const filterButtons = document.querySelectorAll('.m3-filter-btn');
+    const filterButtons = document.querySelectorAll('.m3-filter-btn[data-filter]');
     const projectCards = document.querySelectorAll('.m3-project-card[data-category]');
 
     filterButtons.forEach(function (btn) {
@@ -60,6 +60,42 @@
         });
       });
     });
+
+    // 2B. Home Page Blog Category Filter Tabs & Carousel Controls
+    const blogFilterBtns = document.querySelectorAll('.m3-filter-btn[data-blog-filter]');
+    const blogCards = document.querySelectorAll('.m3-blog-card[data-blog-category]');
+    const blogTrack = document.getElementById('m3-home-blog-track');
+    const blogPrev = document.getElementById('m3-blog-prev');
+    const blogNext = document.getElementById('m3-blog-next');
+
+    blogFilterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const filter = btn.getAttribute('data-blog-filter');
+        blogFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        if (blogTrack) blogTrack.classList.remove('carousel-mode');
+
+        blogCards.forEach(function (card) {
+          const cat = card.getAttribute('data-blog-category');
+          if (filter === 'all' || cat === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    if (blogTrack && blogPrev && blogNext) {
+      blogPrev.addEventListener('click', function () {
+        blogTrack.classList.add('carousel-mode');
+        blogTrack.scrollBy({ left: -420, behavior: 'smooth' });
+      });
+      blogNext.addEventListener('click', function () {
+        blogTrack.classList.add('carousel-mode');
+        blogTrack.scrollBy({ left: 420, behavior: 'smooth' });
+      });
+    }
 
     // 3. Dedicated Single Project Page — Inline 16:9 Video Player
     const inlinePlayTrigger = document.getElementById('m3-play-inline-video');

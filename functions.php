@@ -130,6 +130,31 @@ function m3_seed_default_pages() {
         }
     }
 
+    // Seed the 6 Placeholder Blog Categories & 6 Placeholder Blog Posts for easy editing in WP Admin
+    if ( function_exists( 'm3_get_blog_posts_data' ) && ! get_option( 'm3_blog_seeded_v2' ) ) {
+        $default_posts = m3_get_blog_posts_data();
+        foreach ( $default_posts as $bp ) {
+            $post_id = wp_insert_post( array(
+                'post_type'    => 'post',
+                'post_name'    => $bp['slug'],
+                'post_title'   => $bp['title'],
+                'post_excerpt' => $bp['excerpt'],
+                'post_content' => $bp['content'],
+                'post_status'  => 'publish',
+            ) );
+            if ( $post_id && ! is_wp_error( $post_id ) ) {
+                update_post_meta( $post_id, '_m3_post_read_time', $bp['read_time'] );
+                update_post_meta( $post_id, '_m3_post_category_label', $bp['category'] );
+                update_post_meta( $post_id, '_m3_post_category_slug', $bp['cat_slug'] );
+                update_post_meta( $post_id, '_m3_post_accent', $bp['accent'] );
+                update_post_meta( $post_id, '_m3_post_author', $bp['author'] );
+                update_post_meta( $post_id, '_m3_post_image', $bp['image'] );
+                update_post_meta( $post_id, '_m3_post_tags', $bp['tags'] );
+            }
+        }
+        update_option( 'm3_blog_seeded_v2', 1 );
+    }
+
     update_option( 'm3_pages_seeded_v2', 1 );
 }
 add_action( 'after_switch_theme', 'm3_seed_default_pages' );

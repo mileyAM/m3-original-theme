@@ -450,76 +450,190 @@ function m3_get_testimonials_data() {
 }
 
 /**
- * Get Editable Blog Posts (pulls from WordPress Posts or fallback defaults)
+ * Get Editable Blog Categories with M3 Accent Colors
+ */
+function m3_get_blog_categories() {
+    return array(
+        array(
+            'slug'   => 'music-videos',
+            'name'   => 'MUSIC VIDEOS',
+            'accent' => 'red',
+            'count'  => '08',
+        ),
+        array(
+            'slug'   => 'branding',
+            'name'   => 'BRANDING & IDENTITY',
+            'accent' => 'blue',
+            'count'  => '07',
+        ),
+        array(
+            'slug'   => 'music-production',
+            'name'   => 'MUSIC PRODUCTION',
+            'accent' => 'green',
+            'count'  => '06',
+        ),
+        array(
+            'slug'   => 'artist-development',
+            'name'   => 'ARTIST DEVELOPMENT',
+            'accent' => 'purple',
+            'count'  => '05',
+        ),
+        array(
+            'slug'   => 'cinematography',
+            'name'   => 'CINEMATOGRAPHY & COLOR',
+            'accent' => 'gold',
+            'count'  => '06',
+        ),
+        array(
+            'slug'   => 'content-strategy',
+            'name'   => 'CONTENT STRATEGY',
+            'accent' => 'blue',
+            'count'  => '05',
+        ),
+    );
+}
+
+/**
+ * Helper to generate link to a Single Blog Post
+ */
+function m3_post_url( $post_id ) {
+    return m3_page_url( 'single' ) . '&post_id=' . intval( $post_id );
+}
+
+/**
+ * Get Editable Blog Posts (6 Placeholder Posts across 6 Categories, editable in WordPress Posts)
  */
 function m3_get_blog_posts_data() {
     $uri = get_template_directory_uri();
     $defaults = array(
         array(
-            'id'       => 301,
-            'slug'     => 'behind-the-lens-how-we-shoot-music-videos',
-            'title'    => 'BEHIND THE LENS: HOW WE SHOOT MUSIC VIDEOS',
-            'date'     => 'MAY 10, 2024',
-            'category' => 'PRODUCTION',
-            'image'    => $uri . '/assets/images/blog/blog-1-music-videos.jpg',
-            'excerpt'  => 'From pre-production treatment boards and custom audio playback sync to anamorphic lenses and crimson stage lighting.',
-            'content'  => '<p>Shooting a high-impact music video requires total synergy between the sonic track and the visual pacing. At MILEYM3DIA (M3), our directors and audio engineers collaborate from day one—breaking down the BPM, key drops, and lyrical themes before a single light is rigged.</p><h3>1. Treatment & Sonic Sync</h3><p>Every frame must amplify the artist\'s brand identity. We build custom lighting plots using high-output RGBWW cinema fixtures, haze machines, and RED digital cinema cameras to capture raw emotion.</p><h3>2. Color Grading & Final Master</h3><p>In post-production, our colorists craft custom LUTs that give M3 visuals their signature deep onyx shadows and punchy crimson highlights.</p>',
+            'id'        => 301,
+            'slug'      => 'behind-the-lens-how-we-shoot-music-videos',
+            'title'     => 'BEHIND THE LENS: HOW WE SHOOT 8K MUSIC VIDEOS',
+            'date'      => 'MAY 14, 2024',
+            'read_time' => '5 MIN READ',
+            'category'  => 'MUSIC VIDEOS',
+            'cat_slug'  => 'music-videos',
+            'accent'    => 'red',
+            'author'    => 'M3 DIRECTION TEAM',
+            'tags'      => array( '#REDCinema', '#MusicVideos', '#Anamorphic', '#StageLighting' ),
+            'image'     => $uri . '/assets/images/blog/blog-1-music-videos.jpg',
+            'excerpt'   => 'From pre-production treatment boards and timecode audio playback sync to anamorphic lenses and crimson stage lighting.',
+            'content'   => '<p>Shooting a high-impact music video requires total synergy between the sonic track and the visual pacing. At <strong>MILEYM3DIA (M3)</strong>, our directors, cinematographers, and audio engineers collaborate from day one—breaking down the BPM, key drops, and lyrical themes before a single light is rigged on set.</p><blockquote>"A great music video doesn\'t just accompany a record—it builds an unforgettable visual world that fans replay for years." — M3 Direction Team</blockquote><h3>01. Pre-Production Treatment &amp; Sonic Sync</h3><p>Every frame must amplify the artist\'s brand identity. During pre-production, we lock in location scouting, wardrobe styling, and custom lighting plots using high-output RGBWW cinema fixtures, atmospheric haze, and RED V-Raptor 8K cinema bodies paired with anamorphic glass.</p><h3>02. Dynamic Camera Movement &amp; Performance Capture</h3><p>We combine Steadicam flow, Dana Dolly tracking shots, and high-frame-rate 120fps performance takes synced via timecode to the master studio playback stem so every cut hits right on the transient.</p><h3>03. Custom Color Grading &amp; Multi-Format Delivery</h3><p>In post-production, our colorists craft custom theatrical LUTs that give M3 visuals their signature deep onyx shadows, rich skin tones, and punchy crimson highlights—delivering 4K/8K masters alongside vertical 9:16 social cutdowns.</p>',
         ),
         array(
-            'id'       => 302,
-            'slug'     => '5-tips-to-make-your-brand-stand-out-online',
-            'title'    => '5 TIPS TO MAKE YOUR BRAND STAND OUT ONLINE',
-            'date'     => 'APR 28, 2024',
-            'category' => 'BRANDING',
-            'image'    => $uri . '/assets/images/blog/blog-2-brand-stand-out.jpg',
-            'excerpt'  => 'Why cohesive visual identity, sonic branding, and high-retention short-form video separate market leaders from the noise.',
-            'content'  => '<p>In a crowded digital landscape, generic templates kill momentum. To build a brand that sticks and content that connects, your visual and sonic identity must be unmistakable within the first 1.5 seconds.</p><h3>Consistency Across Every Touchpoint</h3><p>Whether a client discovers you through a 15-second reel, a music video, or your website, your typography, color palette, and production value should immediately signal authority.</p>',
+            'id'        => 302,
+            'slug'      => '5-tips-to-make-your-brand-stand-out-online',
+            'title'     => '5 VISUAL & SONIC KEYS TO MAKE YOUR BRAND STAND OUT',
+            'date'      => 'MAY 08, 2024',
+            'read_time' => '4 MIN READ',
+            'category'  => 'BRANDING & IDENTITY',
+            'cat_slug'  => 'branding',
+            'accent'    => 'blue',
+            'author'    => 'M3 BRAND LAB',
+            'tags'      => array( '#BrandIdentity', '#VisualSystems', '#Typography', '#CreativeDirection' ),
+            'image'     => $uri . '/assets/images/blog/blog-2-brand-stand-out.jpg',
+            'excerpt'   => 'Why cohesive visual identity, sonic branding, and high-contrast campaign visuals separate market leaders from the noise.',
+            'content'   => '<p>In a crowded digital landscape, generic templates kill momentum. To build a brand that sticks and content that converts, your visual and sonic identity must be unmistakable within the first 1.5 seconds of audience contact.</p><blockquote>"Your brand is the visual and emotional architecture that tells people why you matter before you say a word." — M3 Brand Lab</blockquote><h3>01. Architect a High-Contrast Visual System</h3><p>Whether a client discovers you through a 15-second reel, album cover art, product packaging, or your website, your typography, color palette, and grid discipline should immediately signal authority.</p><h3>02. Pair Visual Identity with Sonic Branding</h3><p>Audio is half the experience. Custom sound design, signature audio stingers, and studio-mixed voiceovers elevate brand recall by over 68% across digital video campaigns.</p><h3>03. Build Repeatable Campaign Templates</h3><p>We equip every MILEYM3DIA branding client with a modular style guide, custom motion graphics lower-thirds, and photography direction so every release feels unified and intentional.</p>',
         ),
         array(
-            'id'       => 303,
-            'slug'     => 'the-power-of-visual-storytelling-in-2024',
-            'title'    => 'THE POWER OF VISUAL STORYTELLING IN 2024',
-            'date'     => 'APR 15, 2024',
-            'category' => 'INSIGHTS',
-            'image'    => $uri . '/assets/images/blog/blog-3-visual-storytelling.jpg',
-            'excerpt'  => 'How narrative-driven cinematography and authentic artist development turn passive viewers into lifelong fans.',
-            'content'  => '<p>Audiences don\'t just buy products or stream songs—they buy into stories, worlds, and movements. Our mission at MILEYM3DIA is simple: bring ideas to life through powerful visuals that connect, inspire, and drive real results.</p>',
+            'id'        => 303,
+            'slug'      => 'inside-the-booth-analog-mixing-and-dolby-atmos',
+            'title'     => 'INSIDE THE BOOTH: ANALOG MIXING & DOLBY ATMOS MASTERING',
+            'date'      => 'APR 29, 2024',
+            'read_time' => '6 MIN READ',
+            'category'  => 'MUSIC PRODUCTION',
+            'cat_slug'  => 'music-production',
+            'accent'    => 'green',
+            'author'    => 'M3 SOUND LABS',
+            'tags'      => array( '#MusicProduction', '#DolbyAtmos', '#SSLConsole', '#VocalChain' ),
+            'image'     => $uri . '/assets/images/projects/project-7-music-production.jpg',
+            'excerpt'   => 'How our studio engineers blend Neve & SSL analog hardware warmth with modern spatial audio mastering for streaming.',
+            'content'   => '<p>Great records start with pristine source capture and intentional sound design. Inside the <strong>MILEYM3DIA Sound Lab</strong>, we bridge classic analog hardware chains with modern spatial audio workflows so your record translates on club systems, car stereos, and headphones alike.</p><blockquote>"Low-end punch and vocal presence aren\'t accidents—they are engineered from the microphone capsule all the way to the final master limiter." — M3 Sound Labs</blockquote><h3>01. The Vocal Tracking Chain</h3><p>We route flagship tube microphones through Neve 1073 preamps and optical hardware compression on the way in, capturing intimate detail and dynamic control before hitting the DAW.</p><h3>02. Hybrid Analog Console Summing</h3><p>By splitting drums, 808s, synths, and vocals across our SSL analog summing matrix, we achieve wide stereo separation and harmonic depth that purely digital mixes struggle to replicate.</p><h3>03. Dolby Atmos &amp; Streaming Optimization</h3><p>Every major DSP now prioritizes spatial audio. We deliver both punchy stereo masters (-8 LUFS club/streaming ready) and certified Dolby Atmos ADM BWF masters for Apple Music and Tidal.</p>',
         ),
         array(
-            'id'       => 304,
-            'slug'     => 'our-creative-process-from-idea-to-impact',
-            'title'    => 'OUR CREATIVE PROCESS FROM IDEA TO IMPACT',
-            'date'     => 'APR 5, 2024',
-            'category' => 'PROCESS',
-            'image'    => $uri . '/assets/images/blog/blog-4-creative-process.jpg',
-            'excerpt'  => 'Inside the M3 workflow: how our directors, producers, sound engineers, and editors take your project from concept to launch.',
-            'content'  => '<p>Vision without execution is just a daydream. At M3, we bridge the gap between bold creative concepts and disciplined studio execution across four proven phases: Discovery, Pre-Production, Capture/Recording, and Post-Production Rollout.</p>',
+            'id'        => 304,
+            'slug'      => 'artist-development-building-a-360-album-rollout',
+            'title'     => 'ARTIST DEVELOPMENT: BUILDING A 360° ALBUM ROLLOUT',
+            'date'      => 'APR 19, 2024',
+            'read_time' => '7 MIN READ',
+            'category'  => 'ARTIST DEVELOPMENT',
+            'cat_slug'  => 'artist-development',
+            'accent'    => 'purple',
+            'author'    => 'M3 A&R COLLECTIVE',
+            'tags'      => array( '#ArtistDev', '#EPK', '#AlbumRollout', '#IndependentArtist' ),
+            'image'     => $uri . '/assets/images/projects/project-8-artist-dev.jpg',
+            'excerpt'   => 'From electronic press kits (EPKs) and cover art direction to 60-day content calendars that turn releases into cultural moments.',
+            'content'   => '<p>Dropping a great song without a visual and strategic rollout is like throwing a concert without unlocking the venue doors. At <strong>MILEYM3DIA</strong>, our Artist Development program treats every independent and label talent release like a flagship product launch.</p><blockquote>"Talent gets you heard once. World-building, visual consistency, and disciplined rollout strategy build a career." — M3 A&R Collective</blockquote><h3>01. Visual &amp; Sonic Positioning Bible</h3><p>Before announcing a single or EP, we define your visual era: editorial press photography, color palette, wardrobe direction, and a broadcast-ready Electronic Press Kit (EPK) for media, playlists, and festival buyers.</p><h3>02. The 60-Day Multi-Phase Content Waterfall</h3><p>For every lead single, we capture the main 4K music video, a live acoustic/studio performance visual, 12 vertical short-form teasers, and behind-the-scenes mini-docs so your audience stays engaged for 8+ weeks.</p>',
+        ),
+        array(
+            'id'        => 305,
+            'slug'      => 'the-power-of-visual-storytelling-in-2024',
+            'title'     => 'THE POWER OF VISUAL STORYTELLING & CINEMA COLOR GRADING',
+            'date'      => 'APR 11, 2024',
+            'read_time' => '5 MIN READ',
+            'category'  => 'CINEMATOGRAPHY & COLOR',
+            'cat_slug'  => 'cinematography',
+            'accent'    => 'gold',
+            'author'    => 'M3 POST SUITE',
+            'tags'      => array( '#Cinematography', '#ColorGrading', '#DaVinciResolve', '#VisualStory' ),
+            'image'     => $uri . '/assets/images/blog/blog-3-visual-storytelling.jpg',
+            'excerpt'   => 'How narrative-driven cinematography, intentional lens choices, and theatrical color grading turn viewers into lifelong fans.',
+            'content'   => '<p>Audiences don\'t just buy products or stream songs—they buy into stories, worlds, and movements. Our mission at MILEYM3DIA is simple: bring ideas to life through powerful visuals that connect, inspire, and drive real results.</p><blockquote>"Lighting and color grading set the emotional temperature of a story before a single line of dialogue is spoken." — M3 Post Suite</blockquote><h3>01. Intentional Lens &amp; Lighting Architecture</h3><p>We pair vintage anamorphic and cinema prime glass with motivated key lighting to sculpt faces and create natural depth separation against dark, atmospheric studio environments.</p><h3>02. Theatrical Color Science in DaVinci Resolve</h3><p>Using node-based film emulation, halation control, and split-toning, we ensure every M3 production carries a distinct theatrical look across all displays.</p>',
+        ),
+        array(
+            'id'        => 306,
+            'slug'      => 'our-creative-process-from-idea-to-impact',
+            'title'     => 'OUR CREATIVE PROCESS: FROM STUDIO CONCEPT TO VIRAL IMPACT',
+            'date'      => 'APR 02, 2024',
+            'read_time' => '4 MIN READ',
+            'category'  => 'CONTENT STRATEGY',
+            'cat_slug'  => 'content-strategy',
+            'accent'    => 'blue',
+            'author'    => 'M3 DIGITAL STRATEGY',
+            'tags'      => array( '#ContentStrategy', '#ShortFormVideo', '#CreativeProcess', '#Campaigns' ),
+            'image'     => $uri . '/assets/images/blog/blog-4-creative-process.jpg',
+            'excerpt'   => 'Inside the M3 workflow: how our directors, producers, sound engineers, and editors take your project from concept to launch.',
+            'content'   => '<p>Vision without execution is just a daydream. At M3, we bridge the gap between bold creative concepts and disciplined studio execution across four proven phases: Discovery, Pre-Production, Capture/Recording, and Post-Production Rollout.</p><blockquote>"Every viral campaign is backed by a repeatable system: hook engineering, cinematic pacing, and data-driven distribution." — M3 Digital Strategy</blockquote><h3>01. Hook Engineering for the First 2 Seconds</h3><p>We design visual pattern interrupts and custom audio risers at the start of every short-form and commercial asset to maximize audience retention.</p><h3>02. Cross-Platform Asset Multiplication</h3><p>Every studio shoot is planned to yield horizontal 16:9 masters, vertical 9:16 reels, 4:5 paid ad cutdowns, and high-res editorial stills in a single production day.</p>',
         ),
     );
 
     if ( function_exists( 'get_posts' ) ) {
         $posts = get_posts( array(
             'post_type'      => 'post',
-            'posts_per_page' => 8,
+            'posts_per_page' => 12,
             'post_status'    => 'publish',
         ) );
         if ( ! empty( $posts ) ) {
             $items = array();
             foreach ( $posts as $idx => $p ) {
-                $thumb = function_exists( 'get_the_post_thumbnail_url' ) ? get_the_post_thumbnail_url( $p->ID, 'large' ) : '';
+                $fallback = $defaults[ $idx % count( $defaults ) ];
+                $thumb    = function_exists( 'get_the_post_thumbnail_url' ) ? get_the_post_thumbnail_url( $p->ID, 'large' ) : '';
                 if ( ! $thumb ) {
-                    $fallback_idx = $idx % count( $defaults );
-                    $thumb = $defaults[ $fallback_idx ]['image'];
+                    $thumb = get_post_meta( $p->ID, '_m3_post_image', true ) ?: $fallback['image'];
                 }
+                $cat_name  = get_post_meta( $p->ID, '_m3_post_category_label', true ) ?: $fallback['category'];
+                $cat_slug  = get_post_meta( $p->ID, '_m3_post_category_slug', true ) ?: $fallback['cat_slug'];
+                $accent    = get_post_meta( $p->ID, '_m3_post_accent', true ) ?: $fallback['accent'];
+                $read_time = get_post_meta( $p->ID, '_m3_post_read_time', true ) ?: $fallback['read_time'];
+                $author    = get_post_meta( $p->ID, '_m3_post_author', true ) ?: $fallback['author'];
+                $tags_meta = get_post_meta( $p->ID, '_m3_post_tags', true );
+                $tags      = ! empty( $tags_meta ) && is_array( $tags_meta ) ? $tags_meta : $fallback['tags'];
+
                 $items[] = array(
-                    'id'       => $p->ID,
-                    'slug'     => $p->post_name,
-                    'title'    => strtoupper( $p->post_title ),
-                    'date'     => strtoupper( get_the_date( 'M j, Y', $p ) ),
-                    'category' => 'INSIGHTS',
-                    'image'    => $thumb,
-                    'excerpt'  => $p->post_excerpt ? $p->post_excerpt : wp_trim_words( $p->post_content, 20 ),
-                    'content'  => apply_filters( 'the_content', $p->post_content ),
+                    'id'        => $p->ID,
+                    'slug'      => isset( $p->post_name ) ? $p->post_name : $fallback['slug'],
+                    'title'     => strtoupper( $p->post_title ),
+                    'date'      => function_exists( 'get_the_date' ) ? strtoupper( get_the_date( 'M j, Y', $p ) ) : $fallback['date'],
+                    'read_time' => $read_time,
+                    'category'  => $cat_name,
+                    'cat_slug'  => $cat_slug,
+                    'accent'    => $accent,
+                    'author'    => $author,
+                    'tags'      => $tags,
+                    'image'     => $thumb,
+                    'excerpt'   => ! empty( $p->post_excerpt ) ? $p->post_excerpt : ( function_exists( 'wp_trim_words' ) ? wp_trim_words( $p->post_content, 22 ) : $fallback['excerpt'] ),
+                    'content'   => function_exists( 'apply_filters' ) ? apply_filters( 'the_content', $p->post_content ) : $p->post_content,
                 );
             }
             return $items;

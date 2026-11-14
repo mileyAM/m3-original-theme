@@ -242,53 +242,96 @@ $blog_posts   = m3_get_blog_posts_data();
     </section>
 
     <!-- ====================================================================
-         6. FROM THE BLOG ("LATEST INSIGHTS") — Moved Up + Right-Sided Sidebar
+         6. FROM THE BLOG ("LATEST INSIGHTS") — 6-Post Multi-Category Grid & Carousel (No Sidebar on Home)
          ==================================================================== -->
-    <section class="m3-blog-section" id="blog-section">
+    <section class="m3-blog-section m3-home-blog-section" id="blog-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>
                     <div class="m3-eyebrow">LATEST INSIGHTS • STAY <span class="accent">INSPIRED</span></div>
                     <h2 class="m3-section-title">FROM THE <span class="accent">BLOG</span></h2>
                 </div>
-                <a href="<?php echo esc_url( m3_page_url( 'blog' ) ); ?>" class="m3-btn m3-btn-outline m3-btn-sm">
-                    VIEW ALL ARTICLES →
-                </a>
+
+                <div class="m3-home-blog-controls">
+                    <div class="m3-filter-tabs m3-blog-cat-tabs" role="tablist" aria-label="Filter Blog Categories">
+                        <button type="button" class="m3-filter-btn active" data-blog-filter="all">ALL (6)</button>
+                        <button type="button" class="m3-filter-btn" data-blog-filter="music-videos">MUSIC VIDEOS</button>
+                        <button type="button" class="m3-filter-btn" data-blog-filter="branding">BRANDING</button>
+                        <button type="button" class="m3-filter-btn" data-blog-filter="music-production">MUSIC PROD</button>
+                        <button type="button" class="m3-filter-btn" data-blog-filter="artist-development">ARTIST DEV</button>
+                        <button type="button" class="m3-filter-btn" data-blog-filter="cinematography">CINEMA</button>
+                        <button type="button" class="m3-filter-btn" data-blog-filter="content-strategy">STRATEGY</button>
+                    </div>
+                    <div class="m3-carousel-nav" aria-label="Blog Carousel Controls">
+                        <button type="button" class="m3-carousel-btn" id="m3-blog-prev" title="Previous Posts" aria-label="Previous Posts">◀</button>
+                        <button type="button" class="m3-carousel-btn" id="m3-blog-next" title="Next Posts" aria-label="Next Posts">▶</button>
+                        <a href="<?php echo esc_url( m3_page_url( 'blog' ) ); ?>" class="m3-btn m3-btn-outline m3-btn-sm">
+                            ALL ARTICLES →
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- 2-Column Layout with Right-Sided Blog Sidebar -->
-            <div class="m3-blog-with-sidebar">
-                <div class="m3-blog-main-grid">
-                    <?php foreach ( array_slice( $blog_posts, 0, 4 ) as $post_item ) : ?>
-                        <article class="m3-blog-card">
-                            <a href="<?php echo esc_url( m3_page_url( 'single' ) . '&post_id=' . $post_item['id'] ); ?>" class="m3-blog-thumb">
-                                <img src="<?php echo esc_url( $post_item['image'] ); ?>" alt="<?php echo esc_attr( $post_item['title'] ); ?>" loading="lazy">
-                            </a>
-                            <div class="m3-blog-body">
-                                <div>
-                                    <div class="m3-blog-date">
-                                        <span style="color:var(--m3-red);"><?php echo esc_html( $post_item['category'] ); ?></span> • <?php echo esc_html( $post_item['date'] ); ?>
-                                    </div>
-                                    <h3 class="m3-blog-title">
-                                        <a href="<?php echo esc_url( m3_page_url( 'single' ) . '&post_id=' . $post_item['id'] ); ?>">
-                                            <?php echo esc_html( $post_item['title'] ); ?>
-                                        </a>
-                                    </h3>
-                                    <p style="color:var(--m3-text-muted);font-size:0.84rem;margin-top:8px;line-height:1.55;">
-                                        <?php echo esc_html( $post_item['excerpt'] ); ?>
-                                    </p>
+            <!-- 6-Post Symmetrical Grid / Interactive Carousel Track (No Sidebar on Home Page) -->
+            <div class="m3-home-blog-showcase" id="m3-home-blog-track">
+                <?php foreach ( array_slice( $blog_posts, 0, 6 ) as $post_item ) : ?>
+                    <article class="m3-blog-card accent-<?php echo esc_attr( $post_item['accent'] ); ?>"
+                             data-blog-category="<?php echo esc_attr( $post_item['cat_slug'] ); ?>">
+                        <!-- Featured Image Header with Dark Overlay, Category Pill, Read Time & Overlaid Title -->
+                        <a href="<?php echo esc_url( m3_post_url( $post_item['id'] ) ); ?>" class="m3-blog-thumb">
+                            <img src="<?php echo esc_url( $post_item['image'] ); ?>" alt="<?php echo esc_attr( $post_item['title'] ); ?>" loading="lazy">
+                            <div class="m3-blog-thumb-overlay">
+                                <div class="m3-blog-thumb-top">
+                                    <span class="m3-blog-cat-pill"><?php echo esc_html( $post_item['category'] ); ?></span>
+                                    <span class="m3-blog-readtime-pill">⏱ <?php echo esc_html( $post_item['read_time'] ); ?></span>
                                 </div>
+                                <div class="m3-blog-thumb-bottom">
+                                    <span class="m3-blog-thumb-meta"><?php echo esc_html( $post_item['date'] . ' • ' . $post_item['author'] ); ?></span>
+                                    <h3 class="m3-blog-thumb-title"><?php echo esc_html( $post_item['title'] ); ?></h3>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Crisp Dark Architectural Card Body with Normal Title, Excerpt, Tags & Read Link -->
+                        <div class="m3-blog-body">
+                            <div>
+                                <div class="m3-blog-date">
+                                    <span class="cat-dot"></span>
+                                    <span class="cat-text"><?php echo esc_html( $post_item['category'] ); ?></span>
+                                    <span>•</span>
+                                    <span><?php echo esc_html( $post_item['date'] ); ?></span>
+                                    <span>•</span>
+                                    <span class="read-text"><?php echo esc_html( $post_item['read_time'] ); ?></span>
+                                </div>
+                                <h4 class="m3-blog-title">
+                                    <a href="<?php echo esc_url( m3_post_url( $post_item['id'] ) ); ?>">
+                                        <?php echo esc_html( $post_item['title'] ); ?>
+                                    </a>
+                                </h4>
+                                <p class="m3-blog-excerpt">
+                                    <?php echo esc_html( $post_item['excerpt'] ); ?>
+                                </p>
+                            </div>
+
+                            <div>
+                                <?php if ( ! empty( $post_item['tags'] ) ) : ?>
+                                    <div class="m3-blog-card-tags">
+                                        <?php foreach ( array_slice( $post_item['tags'], 0, 3 ) as $tag_label ) : ?>
+                                            <a href="<?php echo esc_url( m3_page_url( 'blog' ) . '&tag=' . rawurlencode( ltrim( $tag_label, '#' ) ) ); ?>" class="m3-tag-chip">
+                                                <?php echo esc_html( $tag_label ); ?>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+
                                 <div class="m3-blog-readmore">
-                                    <a href="<?php echo esc_url( m3_page_url( 'single' ) . '&post_id=' . $post_item['id'] ); ?>">READ ARTICLE →</a>
+                                    <a href="<?php echo esc_url( m3_post_url( $post_item['id'] ) ); ?>">READ FULL ARTICLE →</a>
                                     <span><?php echo esc_html( $post_item['read_time'] ); ?></span>
                                 </div>
                             </div>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
-
-                <!-- Right-Sided Blog Sidebar -->
-                <?php get_sidebar(); ?>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>

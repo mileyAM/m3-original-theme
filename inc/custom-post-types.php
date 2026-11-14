@@ -96,8 +96,63 @@ function m3_add_meta_boxes() {
     add_meta_box( 'm3_service_meta', __( 'M3 Service Settings (Icon, Accent Color, Starting Price)', 'mileym3dia' ), 'm3_service_meta_callback', 'm3_service', 'normal', 'high' );
     add_meta_box( 'm3_project_meta', __( 'M3 Single Project Page Settings (Client, Deliverables, Optional Video Embed)', 'mileym3dia' ), 'm3_project_meta_callback', 'm3_project', 'normal', 'high' );
     add_meta_box( 'm3_inquiry_meta', __( 'M3 Client Portal Status & Deliverables', 'mileym3dia' ), 'm3_inquiry_meta_callback', 'm3_inquiry', 'normal', 'high' );
+    add_meta_box( 'm3_post_meta', __( 'M3 Blog Post Display Settings (Read Time, Accent Color, Category Badge)', 'mileym3dia' ), 'm3_post_meta_callback', 'post', 'normal', 'high' );
 }
 add_action( 'add_meta_boxes', 'm3_add_meta_boxes' );
+
+function m3_post_meta_callback( $post ) {
+    $read_time = get_post_meta( $post->ID, '_m3_post_read_time', true ) ?: '5 MIN READ';
+    $accent    = get_post_meta( $post->ID, '_m3_post_accent', true ) ?: 'red';
+    $cat_label = get_post_meta( $post->ID, '_m3_post_category_label', true ) ?: 'MUSIC VIDEOS';
+    $cat_slug  = get_post_meta( $post->ID, '_m3_post_category_slug', true ) ?: 'music-videos';
+    $author    = get_post_meta( $post->ID, '_m3_post_author', true ) ?: 'M3 STUDIO TEAM';
+    $image     = get_post_meta( $post->ID, '_m3_post_image', true ) ?: '';
+    wp_nonce_field( 'm3_save_meta', 'm3_meta_nonce' );
+    ?>
+    <p>
+        <label><strong>Read Time Badge (e.g. 5 MIN READ):</strong></label><br>
+        <input type="text" name="m3_post_read_time" value="<?php echo esc_attr( $read_time ); ?>" style="width:100%;max-width:260px;">
+    </p>
+    <p>
+        <label><strong>Category Badge Label:</strong></label><br>
+        <input type="text" name="m3_post_category_label" value="<?php echo esc_attr( $cat_label ); ?>" style="width:100%;max-width:340px;">
+    </p>
+    <p>
+        <label><strong>Category Filter Slug:</strong></label><br>
+        <select name="m3_post_category_slug" style="width:100%;max-width:340px;">
+            <?php
+            $cats = array(
+                'music-videos'       => 'Music Videos',
+                'branding'           => 'Branding & Identity',
+                'music-production'   => 'Music Production',
+                'artist-development' => 'Artist Development',
+                'cinematography'     => 'Cinematography & Color',
+                'content-strategy'   => 'Content Strategy',
+            );
+            foreach ( $cats as $slug => $label ) :
+                ?>
+                <option value="<?php echo esc_attr( $slug ); ?>" <?php selected( $cat_slug, $slug ); ?>><?php echo esc_html( $label ); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </p>
+    <p>
+        <label><strong>Card Top Accent Color:</strong></label><br>
+        <select name="m3_post_accent" style="width:100%;max-width:340px;">
+            <?php foreach ( array( 'red' => 'Crimson Red', 'blue' => 'Electric Blue', 'green' => 'Neon Yellow-Green', 'purple' => 'Vivid Purple', 'gold' => 'Studio Gold' ) as $k => $label ) : ?>
+                <option value="<?php echo esc_attr( $k ); ?>" <?php selected( $accent, $k ); ?>><?php echo esc_html( $label ); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </p>
+    <p>
+        <label><strong>Author Credit Label:</strong></label><br>
+        <input type="text" name="m3_post_author" value="<?php echo esc_attr( $author ); ?>" style="width:100%;max-width:340px;">
+    </p>
+    <p>
+        <label><strong>Fallback Header / Featured Image URL (or use WP Featured Image on right):</strong></label><br>
+        <input type="text" name="m3_post_image" value="<?php echo esc_attr( $image ); ?>" style="width:100%;">
+    </p>
+    <?php
+}
 
 function m3_service_meta_callback( $post ) {
     $icon        = get_post_meta( $post->ID, '_m3_service_icon', true ) ?: 'videography';
@@ -236,6 +291,12 @@ function m3_save_custom_meta( $post_id ) {
         'm3_inquiry_status'       => '_m3_inquiry_status',
         'm3_inquiry_package'      => '_m3_inquiry_package',
         'm3_inquiry_promo'        => '_m3_inquiry_promo',
+        'm3_post_read_time'       => '_m3_post_read_time',
+        'm3_post_category_label'  => '_m3_post_category_label',
+        'm3_post_category_slug'   => '_m3_post_category_slug',
+        'm3_post_accent'          => '_m3_post_accent',
+        'm3_post_author'          => '_m3_post_author',
+        'm3_post_image'           => '_m3_post_image',
     );
     foreach ( $fields as $input => $meta_key ) {
         if ( isset( $_POST[ $input ] ) ) {
