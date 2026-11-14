@@ -1,0 +1,96 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "custom": true,
+      "defaultPalette": false,
+      "palette": [
+        {
+          "name": "M3 Onyx Black",
+          "slug": "m3-black",
+          "color": "#070709"
+        },
+        {
+          "name": "M3 Carbon Dark",
+          "slug": "m3-carbon",
+          "color": "#0E0E13"
+        },
+        {
+          "name": "M3 Card Surface",
+          "slug": "m3-surface",
+          "color": "#14141C"
+        },
+        {
+          "name": "M3 Crimson Red",
+          "slug": "m3-red",
+          "color": "#E51923"
+        },
+        {
+          "name": "M3 Electric Blue",
+          "slug": "m3-blue",
+          "color": "#0088FF"
+        },
+        {
+          "name": "M3 Neon Chartreuse Green",
+          "slug": "m3-green",
+          "color": "#C5E800"
+        },
+        {
+          "name": "M3 Vivid Purple",
+          "slug": "m3-purple",
+          "color": "#9D4EDD"
+        },
+        {
+          "name": "M3 Pure White",
+          "slug": "m3-white",
+          "color": "#FFFFFF"
+        },
+        {
+          "name": "M3 Muted Silver",
+          "slug": "m3-muted",
+          "color": "#A0A3B1"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "'Oswald', 'Impact', sans-serif",
+          "name": "Display Headline (Oswald)",
+          "slug": "display"
+        },
+        {
+          "fontFamily": "'Syne', 'Oswald', sans-serif",
+          "name": "Wide Industrial (Syne)",
+          "slug": "industrial"
+        },
+        {
+          "fontFamily": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+          "name": "Body Sans (Plus Jakarta Sans)",
+          "slug": "body"
+        },
+        {
+          "fontFamily": "'Caveat', cursive",
+          "name": "Brush Script Accent (Caveat)",
+          "slug": "script"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "1280px",
+      "wideSize": "1440px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#070709",
+      "text": "#FFFFFF"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "lineHeight": "1.6"
+    }
+  }
+}
