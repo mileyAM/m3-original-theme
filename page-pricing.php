@@ -12,10 +12,8 @@ $packages = m3_get_packages_data();
 
 <main id="primary" class="site-main">
 
-    <!-- Sliced Red Banner ("WE DON'T JUST CREATE. WE BRING IT TO LIFE.") -->
-    <section class="m3-sliced-banner-wrap">
-        <img src="<?php echo esc_url( $uri . '/assets/images/banners/banner-red-bring-to-life.jpg' ); ?>" alt="MILEYM3DIA Red Studio Banner">
-    </section>
+    <!-- Master Acid Lime Green Banner ("BIG IDEAS. BOLD CONTENT. REAL IMPACT. 10% OFF") -->
+    <?php m3_render_master_banner( 'green' ); ?>
 
     <section class="m3-pricing-section">
         <div class="m3-container">

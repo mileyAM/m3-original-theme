@@ -171,21 +171,46 @@ function m3_customize_register( $wp_customize ) {
 
     $zone_choices = array(
         'red'    => 'Signature Red',
-        'blue'   => 'Royal Electric Blue',
         'purple' => 'Electric Purple',
         'green'  => 'Acid Lime Green',
+        'blue'   => 'Royal Electric Blue',
     );
 
+    // 5A. Per-Page Master Color Themes (Matching the 4 Master Banners)
+    $page_theme_controls = array(
+        'm3_page_home_accent'     => array( 'Home Page Master Theme (Banner 1)', 'red' ),
+        'm3_page_services_accent' => array( 'Services Page Master Theme (Banner 2)', 'purple' ),
+        'm3_page_work_accent'     => array( 'Work Page Master Theme (Banner 3)', 'green' ),
+        'm3_page_about_accent'    => array( 'About Us Master Theme (Banner 4)', 'blue' ),
+        'm3_page_pricing_accent'  => array( 'Pricing Page Master Theme (10% Promo)', 'green' ),
+        'm3_page_contact_accent'  => array( 'Contact Page Master Theme', 'red' ),
+        'm3_page_blog_accent'     => array( 'Blog / Insights Master Theme', 'blue' ),
+    );
+
+    foreach ( $page_theme_controls as $id => $cfg ) {
+        $wp_customize->add_setting( $id, array(
+            'default'           => $cfg[1],
+            'sanitize_callback' => 'sanitize_key',
+        ) );
+        $wp_customize->add_control( $id, array(
+            'label'   => $cfg[0],
+            'section' => 'm3_colors_section',
+            'type'    => 'select',
+            'choices' => $zone_choices,
+        ) );
+    }
+
+    // 5B. Home Page Per-Section Accent Overrides (All Default to Red for Seamless Cohesion)
     $zone_controls = array(
-        'm3_zone_header_accent'   => array( 'Header Nav Active Line & Buttons', 'red' ),
-        'm3_zone_hero_accent'     => array( 'Hero Headline & Primary CTA', 'red' ),
-        'm3_zone_mission_accent'  => array( 'Mission & Stats Zone', 'blue' ),
-        'm3_zone_services_accent' => array( 'Services Section Header', 'red' ),
-        'm3_zone_about_accent'    => array( 'About Us Split Zone', 'green' ),
-        'm3_zone_work_accent'     => array( 'Featured Work / Portfolio Zone', 'purple' ),
-        'm3_zone_blog_accent'     => array( 'From The Blog Zone', 'blue' ),
-        'm3_zone_pricing_accent'  => array( 'Pricing Featured Tier & Checks', 'red' ),
-        'm3_zone_footer_accent'   => array( 'Footer Border & Subscribe Button', 'red' ),
+        'm3_zone_header_accent'   => array( 'Header Nav Active Line & Button Accent', 'red' ),
+        'm3_zone_hero_accent'     => array( 'Hero Headline & Primary CTA Accent', 'red' ),
+        'm3_zone_mission_accent'  => array( 'Mission & Stats Section Accent', 'red' ),
+        'm3_zone_services_accent' => array( 'Home Services Grid Accent', 'red' ),
+        'm3_zone_about_accent'    => array( 'Home About Us Split Accent', 'red' ),
+        'm3_zone_work_accent'     => array( 'Home Featured Work Grid Accent', 'red' ),
+        'm3_zone_blog_accent'     => array( 'Home Blog Carousel Accent', 'red' ),
+        'm3_zone_pricing_accent'  => array( 'Home Pricing Section Accent', 'red' ),
+        'm3_zone_footer_accent'   => array( 'Footer Border & Subscribe Accent', 'red' ),
     );
 
     foreach ( $zone_controls as $id => $cfg ) {

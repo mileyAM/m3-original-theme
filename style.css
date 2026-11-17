@@ -744,15 +744,22 @@ ul {
    ========================================================================== */
 .m3-mission-stats {
   position: relative;
-  background-color: #080C14;
+  background-color: #07070B;
   background-image:
-    radial-gradient(circle at 18% 50%, rgba(0, 136, 255, 0.14) 0%, transparent 52%),
-    radial-gradient(circle at 88% 50%, rgba(197, 232, 0, 0.08) 0%, transparent 48%),
-    linear-gradient(180deg, #070A12 0%, #0A0F1A 100%);
-  border-top: 2px solid rgba(0, 136, 255, 0.45);
-  border-bottom: 1px solid rgba(0, 136, 255, 0.25);
+    radial-gradient(circle at 18% 50%, var(--m3-accent-glow) 0%, transparent 58%),
+    linear-gradient(180deg, #070709 0%, #0A0A10 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 72px 0;
   overflow: hidden;
+}
+
+.m3-mission-stats.accent-blue {
+  background-image:
+    radial-gradient(circle at 18% 50%, rgba(30, 107, 255, 0.14) 0%, transparent 56%),
+    linear-gradient(180deg, #070A12 0%, #0A0F1A 100%);
+  border-top: 2px solid rgba(30, 107, 255, 0.40);
+  border-bottom: 1px solid rgba(30, 107, 255, 0.20);
 }
 
 .m3-mission-stats::before {
@@ -760,8 +767,8 @@ ul {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
   background-size: 48px 48px;
   z-index: 1;
   pointer-events: none;
@@ -791,9 +798,9 @@ ul {
 }
 
 .m3-stat-box {
-  background: #0D1320;
-  border: 1px solid rgba(30, 107, 255, 0.34);
-  border-top: 3px solid var(--m3-blue);
+  background: #0E0E14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 3px solid var(--m3-accent);
   border-radius: 2px;
   padding: 26px 16px;
   text-align: center;
@@ -804,43 +811,26 @@ ul {
   transition: transform var(--m3-transition), border-color var(--m3-transition), box-shadow var(--m3-transition);
 }
 
+.m3-stat-box.stat-blue {
+  border-top: 3px solid var(--m3-blue);
+}
 .m3-stat-box.stat-green {
-  border-color: rgba(0, 255, 102, 0.34);
   border-top: 3px solid var(--m3-green);
 }
 .m3-stat-box.stat-cyan {
-  border-color: rgba(0, 229, 255, 0.34);
   border-top: 3px solid var(--m3-cyan);
 }
 .m3-stat-box.stat-yellow {
-  border-color: rgba(245, 255, 0, 0.34);
   border-top: 3px solid var(--m3-yellow);
 }
 .m3-stat-box.stat-purple {
-  border-color: rgba(168, 56, 255, 0.34);
   border-top: 3px solid var(--m3-purple);
 }
 
 .m3-stat-box:hover {
   transform: translateY(-3px);
-  border-color: var(--m3-blue);
-  box-shadow: 0 10px 28px rgba(30, 107, 255, 0.18);
-}
-.m3-stat-box.stat-green:hover {
-  border-color: var(--m3-green);
-  box-shadow: 0 10px 28px rgba(0, 255, 102, 0.18);
-}
-.m3-stat-box.stat-cyan:hover {
-  border-color: var(--m3-cyan);
-  box-shadow: 0 10px 28px rgba(0, 229, 255, 0.18);
-}
-.m3-stat-box.stat-yellow:hover {
-  border-color: var(--m3-yellow);
-  box-shadow: 0 10px 28px rgba(245, 255, 0, 0.18);
-}
-.m3-stat-box.stat-purple:hover {
-  border-color: var(--m3-purple);
-  box-shadow: 0 10px 28px rgba(168, 56, 255, 0.18);
+  border-color: var(--m3-accent);
+  box-shadow: 0 10px 28px var(--m3-accent-glow);
 }
 
 .m3-stat-icon {
@@ -3144,3 +3134,238 @@ ul {
     gap: 12px;
   }
 }
+
+/* ==========================================================================
+   PAGE-LEVEL DEDICATED COLOR THEMES (Aligned with the 4 Master Banners)
+   Services = Purple, Work/Pricing = Lime Green, About/Blog = Blue, Home/Contact = Red
+   ========================================================================== */
+.page-theme-purple {
+  --m3-accent: var(--m3-purple);
+  --m3-accent-hover: var(--m3-purple-hover);
+  --m3-accent-glow: var(--m3-purple-glow);
+  --m3-accent-text-on-solid: #FFFFFF;
+}
+.page-theme-green {
+  --m3-accent: var(--m3-green);
+  --m3-accent-hover: var(--m3-green-hover);
+  --m3-accent-glow: var(--m3-green-glow);
+  --m3-accent-text-on-solid: #070709;
+}
+.page-theme-blue {
+  --m3-accent: var(--m3-blue);
+  --m3-accent-hover: var(--m3-blue-hover);
+  --m3-accent-glow: var(--m3-blue-glow);
+  --m3-accent-text-on-solid: #FFFFFF;
+}
+.page-theme-red {
+  --m3-accent: var(--m3-red);
+  --m3-accent-hover: var(--m3-red-hover);
+  --m3-accent-glow: var(--m3-red-glow);
+  --m3-accent-text-on-solid: #FFFFFF;
+}
+
+/* Active Nav Links Locked to Page Theme */
+.page-theme-purple .m3-nav-link.active,
+.page-theme-purple .m3-nav-item.current-menu-item > .m3-nav-link {
+  color: var(--m3-purple);
+}
+.page-theme-purple .m3-nav-link.active::after,
+.page-theme-purple .m3-nav-item.current-menu-item > .m3-nav-link::after {
+  background-color: var(--m3-purple);
+}
+
+.page-theme-green .m3-nav-link.active,
+.page-theme-green .m3-nav-item.current-menu-item > .m3-nav-link {
+  color: var(--m3-green);
+}
+.page-theme-green .m3-nav-link.active::after,
+.page-theme-green .m3-nav-item.current-menu-item > .m3-nav-link::after {
+  background-color: var(--m3-green);
+}
+
+.page-theme-blue .m3-nav-link.active,
+.page-theme-blue .m3-nav-item.current-menu-item > .m3-nav-link {
+  color: var(--m3-blue);
+}
+.page-theme-blue .m3-nav-link.active::after,
+.page-theme-blue .m3-nav-item.current-menu-item > .m3-nav-link::after {
+  background-color: var(--m3-blue);
+}
+
+.page-theme-red .m3-nav-link.active,
+.page-theme-red .m3-nav-item.current-menu-item > .m3-nav-link {
+  color: var(--m3-red);
+}
+.page-theme-red .m3-nav-link.active::after,
+.page-theme-red .m3-nav-item.current-menu-item > .m3-nav-link::after {
+  background-color: var(--m3-red);
+}
+
+/* ==========================================================================
+   INTERACTIVE MASTER BANNER SYSTEM (Red, Purple, Acid Lime Green, Royal Blue)
+   100% Full-Bleed Widescreen Display with Precision Clickable Overlays
+   ========================================================================== */
+.m3-master-banner-wrap {
+  position: relative;
+  width: 100%;
+  background: #030305;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+
+.m3-master-banner-container {
+  width: 100%;
+  max-width: 1536px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.m3-master-banner-stage {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.m3-master-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.m3-banner-hotspot-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.m3-banner-hotspot {
+  position: absolute;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 2px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Button Hotspots (Overlaying the hardcoded outline buttons) */
+.m3-hotspot-btn {
+  border: 2px solid transparent;
+}
+.m3-hotspot-btn:hover,
+.m3-hotspot-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.02);
+}
+
+.hotspot-red:hover,
+.hotspot-red:focus-visible {
+  border-color: rgba(229, 25, 35, 0.95);
+  box-shadow: 0 0 24px rgba(229, 25, 35, 0.70), inset 0 0 14px rgba(229, 25, 35, 0.30);
+}
+
+.hotspot-purple:hover,
+.hotspot-purple:focus-visible {
+  border-color: rgba(168, 56, 255, 0.95);
+  box-shadow: 0 0 24px rgba(168, 56, 255, 0.70), inset 0 0 14px rgba(168, 56, 255, 0.30);
+}
+
+.hotspot-blue:hover,
+.hotspot-blue:focus-visible {
+  border-color: rgba(30, 107, 255, 0.95);
+  box-shadow: 0 0 24px rgba(30, 107, 255, 0.70), inset 0 0 14px rgba(30, 107, 255, 0.30);
+}
+
+/* Subtle link hotspots (social/website) */
+.hotspot-social:hover,
+.hotspot-social:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 14px rgba(229, 25, 35, 0.4);
+}
+
+/* Category filter icons on Green Banner */
+.hotspot-cat {
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+.hotspot-cat:hover,
+.hotspot-cat:focus-visible {
+  border-color: rgba(197, 232, 0, 0.7);
+  background: rgba(197, 232, 0, 0.09);
+  box-shadow: 0 0 18px rgba(197, 232, 0, 0.40);
+  transform: translateY(-2px);
+}
+
+/* Coupon Box on Green Banner */
+.m3-banner-coupon-box {
+  border: 2px dashed transparent;
+  cursor: pointer;
+  background: transparent;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.m3-banner-coupon-box:hover,
+.m3-banner-coupon-box:focus-visible {
+  border-color: #C5E800;
+  background: rgba(197, 232, 0, 0.12);
+  box-shadow: 0 0 28px rgba(197, 232, 0, 0.45);
+}
+.m3-coupon-tooltip {
+  opacity: 0;
+  pointer-events: none;
+  font-family: var(--m3-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #070709;
+  background: #C5E800;
+  padding: 4px 10px;
+  border-radius: 2px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(6px);
+  position: absolute;
+  bottom: 8px;
+  white-space: nowrap;
+}
+.m3-banner-coupon-box:hover .m3-coupon-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Actions strip */
+.m3-banner-mobile-actions {
+  display: none;
+  padding: 14px 20px 20px;
+  background: #09090E;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.m3-mobile-filter-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .m3-banner-mobile-actions {
+    display: flex;
+  }
+}
+

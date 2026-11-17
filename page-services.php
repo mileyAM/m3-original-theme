@@ -15,32 +15,9 @@ $packages = m3_get_packages_data();
 
 <main id="primary" class="site-main">
 
-    <!-- Neon Yellow-Green Hero Banner ("BIG IDEAS. BOLD CONTENT. REAL IMPACT.") -->
-    <section class="m3-color-banner accent-green" style="background-image: url('<?php echo esc_url( $uri . '/assets/images/banners/plate-green-big-ideas.jpg' ); ?>');padding:72px 0;">
-        <div class="m3-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.4fr 0.85fr;gap:24px;align-items:center;">
-            <div></div>
-            <div style="text-align:center;">
-                <span class="m3-banner-badge">03 • OUR CAPABILITIES</span>
-                <h1 class="m3-banner-headline">
-                    BIG IDEAS. BOLD CONTENT.
-                </h1>
-                <div class="m3-script-text" style="color:var(--m3-accent);font-size:2.5rem;margin-bottom:12px;">
-                    REAL IMPACT.
-                </div>
-                <p style="font-size:0.95rem;color:var(--m3-text-muted);max-width:520px;margin:0 auto;">
-                    End-to-end visual media, music production, artist development, and brand design—100% customizable to your project goals.
-                </p>
-            </div>
-            <div style="background:rgba(7,7,9,0.88);border:1px solid var(--m3-accent);padding:20px;border-radius:4px;text-align:center;">
-                <div style="font-family:var(--m3-font-display);font-size:1.85rem;font-weight:700;color:var(--m3-accent);line-height:1;">10% OFF</div>
-                <div style="font-family:var(--m3-font-display);font-size:0.88rem;letter-spacing:0.08em;margin:4px 0 10px;">YOUR FIRST PROJECT</div>
-                <div class="m3-promo-code-pill" data-copy-code="M3FIRST10" style="margin:0 auto;font-size:0.75rem;">
-                    <span>USE CODE: <strong>M3FIRST10</strong></span>
-                    <span class="copy-feedback" style="font-size:0.65rem;">[COPY]</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Master Purple Banner ("VISUALS THAT SPEAK. BRANDING THAT STICKS. CONTENT THAT CONNECTS.")
+         Full uncropped banner with clickable [WORK WITH US] button overlay -->
+    <?php m3_render_master_banner( 'purple' ); ?>
 
     <!-- Full 8-Service Detailed Grid (All Editable via m3_service CPT & Customizer) -->
     <section class="m3-services-section">

@@ -77,14 +77,13 @@ $blog_posts   = m3_get_blog_posts_data();
 
     <!-- ====================================================================
          2. MISSION & STATS BAR ("WE ARE MILEYM3DIA / VISION MEETS EXECUTION")
-            Reassessed Color Usage: Contrasting Carbon / Electric Blue & Neon Chartreuse
-            to cleanly break up the Red Hero above from the sections below.
+            Cohesive Obsidian & Signature Red Palette matching the Hero above
          ==================================================================== -->
-    <section class="m3-mission-stats accent-<?php echo esc_attr( m3_zone_accent( 'mission', 'blue' ) ); ?>" id="mission-section">
+    <section class="m3-mission-stats accent-<?php echo esc_attr( m3_zone_accent( 'mission', 'red' ) ); ?>" id="mission-section">
         <div class="m3-container m3-mission-grid">
             <div class="m3-mission-copy">
                 <div class="m3-eyebrow">
-                    <span style="display:inline-block;width:8px;height:8px;background:var(--m3-blue);"></span>
+                    <span style="display:inline-block;width:8px;height:8px;background:var(--m3-accent);"></span>
                     WE ARE <span class="accent">MILEYM3DIA</span>
                 </div>
                 <h2 class="m3-section-title">
@@ -98,22 +97,22 @@ $blog_posts   = m3_get_blog_posts_data();
             </div>
 
             <div class="m3-stats-row">
-                <div class="m3-stat-box stat-blue">
+                <div class="m3-stat-box">
                     <div class="m3-stat-icon"><?php echo m3_get_svg_icon( 'clock' ); ?></div>
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_1_num', '150+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_1_label', 'PROJECTS COMPLETED' ) ); ?></div>
                 </div>
-                <div class="m3-stat-box stat-green">
+                <div class="m3-stat-box">
                     <div class="m3-stat-icon"><?php echo m3_get_svg_icon( 'smile' ); ?></div>
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_2_num', '100+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_2_label', 'HAPPY CLIENTS' ) ); ?></div>
                 </div>
-                <div class="m3-stat-box stat-cyan">
+                <div class="m3-stat-box">
                     <div class="m3-stat-icon"><?php echo m3_get_svg_icon( 'award' ); ?></div>
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_3_num', '5+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_3_label', 'YEARS OF EXPERIENCE' ) ); ?></div>
                 </div>
-                <div class="m3-stat-box stat-yellow">
+                <div class="m3-stat-box">
                     <div class="m3-stat-icon"><?php echo m3_get_svg_icon( 'eye' ); ?></div>
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_4_num', '10M+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_4_label', 'VIEWS GENERATED' ) ); ?></div>
@@ -121,6 +120,12 @@ $blog_posts   = m3_get_blog_posts_data();
             </div>
         </div>
     </section>
+
+    <!-- ====================================================================
+         2B. MASTER RED BANNER ("WE DON'T JUST CREATE. WE BRING IT TO LIFE.")
+         Full-bleed, uncropped widescreen banner with clickable hotspots
+         ==================================================================== -->
+    <?php m3_render_master_banner( 'red' ); ?>
 
     <!-- ====================================================================
          3. WHAT WE DO / OUR SERVICES (Symmetrical 4x2 Grid of 8 Disciplines)
@@ -156,7 +161,7 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          4. ABOUT US SPLIT ("CREATIVE MINDS. REAL IMPACT." — High-Res Studio Plates)
          ==================================================================== -->
-    <section class="m3-about-split accent-<?php echo esc_attr( m3_zone_accent( 'about', 'green' ) ); ?>" id="about-preview-section">
+    <section class="m3-about-split accent-<?php echo esc_attr( m3_zone_accent( 'about', 'red' ) ); ?>" id="about-preview-section">
         <div class="m3-container m3-about-grid">
             <div class="m3-about-visual-left">
                 <img src="<?php echo esc_url( $uri . '/assets/images/sections/about-hoodie-graphic.jpg' ); ?>" alt="MILEYM3DIA Studio Production & Visual Identity">
@@ -186,7 +191,7 @@ $blog_posts   = m3_get_blog_posts_data();
          5. FEATURED WORK / PORTFOLIO ("OUR LATEST PROJECTS")
             Symmetrical 3x2 Grid — Each card opens its own Single Project Page
          ==================================================================== -->
-    <section class="m3-projects-section accent-<?php echo esc_attr( m3_zone_accent( 'work', 'purple' ) ); ?>" id="work-section">
+    <section class="m3-projects-section accent-<?php echo esc_attr( m3_zone_accent( 'work', 'red' ) ); ?>" id="work-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>
@@ -245,7 +250,7 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          6. FROM THE BLOG ("LATEST INSIGHTS") — 6-Post Multi-Category Grid & Carousel (No Sidebar on Home)
          ==================================================================== -->
-    <section class="m3-blog-section m3-home-blog-section accent-<?php echo esc_attr( m3_zone_accent( 'blog', 'blue' ) ); ?>" id="blog-section">
+    <section class="m3-blog-section m3-home-blog-section accent-<?php echo esc_attr( m3_zone_accent( 'blog', 'red' ) ); ?>" id="blog-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>
@@ -430,7 +435,7 @@ $blog_posts   = m3_get_blog_posts_data();
             Single focused bottom CTA on the Home page
          ==================================================================== -->
     <?php
-    $cta_accent = m3_mod( 'm3_cta_accent_color', 'purple' );
+    $cta_accent = m3_mod( 'm3_cta_accent_color', 'red' );
     $cta_plate  = ( 'red' === $cta_accent ) ? '/assets/images/banners/plate-cta-red.jpg' : '/assets/images/banners/plate-cta-purple.jpg';
     ?>
     <section class="m3-cta-banner accent-<?php echo esc_attr( $cta_accent ); ?>" id="cta-banner-section" style="background-image: url('<?php echo esc_url( $uri . $cta_plate ); ?>');">

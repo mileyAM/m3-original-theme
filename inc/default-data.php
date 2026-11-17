@@ -28,6 +28,219 @@ function m3_zone_accent( $zone, $default = 'red' ) {
 }
 
 /**
+ * Helper to get page-level accent color
+ */
+function m3_get_page_accent( $page_slug = 'home' ) {
+    $defaults = array(
+        'home'     => 'red',
+        'services' => 'purple',
+        'work'     => 'green',
+        'about'    => 'blue',
+        'pricing'  => 'green',
+        'contact'  => 'red',
+        'blog'     => 'blue',
+        'single'   => 'blue',
+        'portal'   => 'red',
+        'login'    => 'red',
+        'register' => 'red',
+    );
+    $default = isset( $defaults[ $page_slug ] ) ? $defaults[ $page_slug ] : 'red';
+    $val     = get_theme_mod( 'm3_page_' . $page_slug . '_accent', $default );
+    $allowed = array( 'red', 'blue', 'purple', 'green', 'cyan', 'yellow' );
+    return in_array( $val, $allowed, true ) ? $val : $default;
+}
+
+/**
+ * Render Full High-Resolution Master Banners with Interactive Clickable Overlays
+ * Banner types: 'red', 'purple', 'green', 'blue'
+ */
+function m3_render_master_banner( $banner_id = 'red', $extra_class = '' ) {
+    $uri = get_template_directory_uri();
+    $banner_id = strtolower( trim( $banner_id ) );
+
+    $banners = array(
+        'red'    => array(
+            'file'   => 'banner-red-legendary.png',
+            'alt'    => "MILEYM3DIA — WE DON'T JUST CREATE. WE BRING IT TO LIFE. LET'S CREATE SOMETHING LEGENDARY.",
+            'ratio'  => '1536 / 255',
+            'theme'  => 'red',
+        ),
+        'purple' => array(
+            'file'   => 'banner-purple-speak.png',
+            'alt'    => 'MILEYM3DIA — VISUALS THAT SPEAK. BRANDING THAT STICKS. CONTENT THAT CONNECTS. WORK WITH US.',
+            'ratio'  => '1536 / 254',
+            'theme'  => 'purple',
+        ),
+        'green'  => array(
+            'file'   => 'banner-green-impact.png',
+            'alt'    => 'MILEYM3DIA — BIG IDEAS. BOLD CONTENT. REAL IMPACT. 10% OFF YOUR FIRST PROJECT USE CODE M3FIRST10',
+            'ratio'  => '1536 / 246',
+            'theme'  => 'green',
+        ),
+        'blue'   => array(
+            'file'   => 'banner-blue-vision.png',
+            'alt'    => "MILEYM3DIA — YOUR VISION. OUR CREATION. LIMITLESS POSSIBILITIES. LET'S BRING YOUR VISION TO LIFE.",
+            'ratio'  => '1536 / 257',
+            'theme'  => 'blue',
+        ),
+    );
+
+    if ( ! isset( $banners[ $banner_id ] ) ) {
+        $banner_id = 'red';
+    }
+    $cfg = $banners[ $banner_id ];
+    ?>
+    <section class="m3-master-banner-wrap accent-<?php echo esc_attr( $cfg['theme'] ); ?> <?php echo esc_attr( $extra_class ); ?>" data-banner-theme="<?php echo esc_attr( $cfg['theme'] ); ?>">
+        <div class="m3-master-banner-container">
+            <div class="m3-master-banner-stage" style="aspect-ratio: <?php echo esc_attr( $cfg['ratio'] ); ?>;">
+                <img src="<?php echo esc_url( $uri . '/assets/images/' . $cfg['file'] ); ?>"
+                     alt="<?php echo esc_attr( $cfg['alt'] ); ?>"
+                     class="m3-master-banner-img"
+                     loading="lazy"
+                     width="1536"
+                     height="255">
+
+                <!-- Precision Interactive Overlay Layer -->
+                <div class="m3-banner-hotspot-layer" aria-label="Interactive Banner Actions">
+                    <?php if ( 'red' === $banner_id ) : ?>
+                        <!-- Red Banner Hotspots -->
+                        <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>"
+                           class="m3-banner-hotspot m3-hotspot-btn hotspot-red"
+                           style="left: 39.19%; top: 62.75%; width: 22.46%; height: 21.57%;"
+                           aria-label="Let's Create Something Legendary — Contact MILEYM3DIA">
+                            <span class="m3-hotspot-glow"></span>
+                            <span class="m3-hotspot-ripple"></span>
+                        </a>
+
+                        <a href="https://instagram.com/mileym3dia"
+                           target="_blank"
+                           rel="noopener"
+                           class="m3-banner-hotspot hotspot-social hotspot-instagram"
+                           style="left: 40.2%; top: 86.5%; width: 9.0%; height: 11.5%;"
+                           title="Follow @MILEYM3DIA on Instagram"
+                           aria-label="Follow @MILEYM3DIA on Instagram">
+                        </a>
+
+                        <a href="<?php echo esc_url( m3_page_url( 'home' ) ); ?>"
+                           class="m3-banner-hotspot hotspot-social hotspot-website"
+                           style="left: 49.5%; top: 86.5%; width: 10.2%; height: 11.5%;"
+                           title="Visit MILEYM3DIA.COM"
+                           aria-label="Visit MILEYM3DIA.COM">
+                        </a>
+
+                    <?php elseif ( 'purple' === $banner_id ) : ?>
+                        <!-- Purple Banner Hotspots -->
+                        <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>?service=creative-direction"
+                           class="m3-banner-hotspot m3-hotspot-btn hotspot-purple"
+                           style="left: 7.36%; top: 84.5%; width: 8.2%; height: 11.5%;"
+                           aria-label="Work With Us — Book Creative Direction">
+                            <span class="m3-hotspot-glow"></span>
+                            <span class="m3-hotspot-ripple"></span>
+                        </a>
+
+                        <div class="m3-banner-hotspot hotspot-bracket-box"
+                             style="left: 83.8%; top: 11.5%; width: 14.5%; height: 39.5%;"
+                             title="High Quality Visuals. Real Results.">
+                        </div>
+
+                    <?php elseif ( 'green' === $banner_id ) : ?>
+                        <!-- Green Banner Hotspots -->
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'video' ) ) ); ?>"
+                           class="m3-banner-hotspot hotspot-cat hotspot-cat-video"
+                           style="left: 31.8%; top: 64.5%; width: 7.2%; height: 30.5%;"
+                           data-filter-trigger="video"
+                           title="Filter Videography Projects"
+                           aria-label="Filter Videography Projects">
+                        </a>
+
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'branding' ) ) ); ?>"
+                           class="m3-banner-hotspot hotspot-cat hotspot-cat-branding"
+                           style="left: 39.5%; top: 64.5%; width: 7.2%; height: 30.5%;"
+                           data-filter-trigger="branding"
+                           title="Filter Branding Projects"
+                           aria-label="Filter Branding Projects">
+                        </a>
+
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'web' ) ) ); ?>"
+                           class="m3-banner-hotspot hotspot-cat hotspot-cat-web"
+                           style="left: 47.2%; top: 64.5%; width: 8.0%; height: 30.5%;"
+                           data-filter-trigger="web"
+                           title="Filter Web & Graphic Design Projects"
+                           aria-label="Filter Web & Graphic Design Projects">
+                        </a>
+
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'music' ) ) ); ?>"
+                           class="m3-banner-hotspot hotspot-cat hotspot-cat-music"
+                           style="left: 55.7%; top: 64.5%; width: 8.5%; height: 30.5%;"
+                           data-filter-trigger="music"
+                           title="Filter Music & Content Projects"
+                           aria-label="Filter Music & Content Projects">
+                        </a>
+
+                        <div class="m3-banner-hotspot m3-banner-coupon-box hotspot-green-coupon"
+                             style="left: 81.38%; top: 24.39%; width: 16.86%; height: 58.54%;"
+                             data-copy-code="M3FIRST10"
+                             role="button"
+                             tabindex="0"
+                             title="Click to copy promo code M3FIRST10"
+                             aria-label="10% Off Your First Project — Click to copy code M3FIRST10">
+                            <span class="m3-coupon-tooltip">CLICK TO COPY CODE</span>
+                        </div>
+
+                    <?php elseif ( 'blue' === $banner_id ) : ?>
+                        <!-- Blue Banner Hotspots -->
+                        <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>"
+                           class="m3-banner-hotspot m3-hotspot-btn hotspot-blue"
+                           style="left: 9.64%; top: 74.2%; width: 18.23%; height: 14.5%;"
+                           aria-label="Let's Bring Your Vision To Life — Contact M3">
+                            <span class="m3-hotspot-glow"></span>
+                            <span class="m3-hotspot-ripple"></span>
+                        </a>
+
+                        <div class="m3-banner-hotspot hotspot-blue-checklist"
+                             style="left: 66.2%; top: 14.5%; width: 16.8%; height: 76.0%;"
+                             title="Why Work With Us? Fast Turnaround & 100% Satisfaction">
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Responsive Mobile Action Fallbacks (ensures easy tapping on mobile phones) -->
+            <div class="m3-banner-mobile-actions">
+                <?php if ( 'red' === $banner_id ) : ?>
+                    <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>" class="m3-btn m3-btn-primary m3-btn-sm">
+                        LET'S CREATE SOMETHING LEGENDARY →
+                    </a>
+                    <a href="https://instagram.com/mileym3dia" target="_blank" rel="noopener" class="m3-btn m3-btn-outline m3-btn-sm">
+                        @MILEYM3DIA
+                    </a>
+                <?php elseif ( 'purple' === $banner_id ) : ?>
+                    <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>?service=creative-direction" class="m3-btn m3-btn-primary m3-btn-sm" style="background:var(--m3-purple);border-color:var(--m3-purple);">
+                        WORK WITH US →
+                    </a>
+                <?php elseif ( 'green' === $banner_id ) : ?>
+                    <div class="m3-mobile-filter-pills">
+                        <button type="button" class="m3-filter-btn" data-filter="video">VIDEOGRAPHY</button>
+                        <button type="button" class="m3-filter-btn" data-filter="branding">BRANDING</button>
+                        <button type="button" class="m3-filter-btn" data-filter="web">WEB DEV</button>
+                        <button type="button" class="m3-filter-btn" data-filter="music">CONTENT</button>
+                    </div>
+                    <div class="m3-promo-code-pill" data-copy-code="M3FIRST10" style="margin-top:10px;">
+                        <span>10% OFF: <strong>M3FIRST10</strong></span>
+                        <span class="copy-feedback" style="font-size:0.65rem;">[COPY]</span>
+                    </div>
+                <?php elseif ( 'blue' === $banner_id ) : ?>
+                    <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>" class="m3-btn m3-btn-primary m3-btn-sm" style="background:var(--m3-blue);border-color:var(--m3-blue);">
+                        LET'S BRING YOUR VISION TO LIFE →
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+    <?php
+}
+
+/**
  * Render crisp SVG icons for Services, Stats, and UI elements
  */
 function m3_get_svg_icon( $name ) {

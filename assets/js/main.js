@@ -170,9 +170,29 @@
       });
     }
 
-    // 5. Click-to-Copy Promo Code (M3FIRST10)
+    // Floating Notification Toast Helper
+    function showToast(message, color) {
+      let toast = document.getElementById('m3-global-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'm3-global-toast';
+        toast.style.cssText = 'position:fixed;bottom:28px;right:28px;background:#0E0E14;border:1px solid ' + (color || 'var(--m3-accent)') + ';color:#FFFFFF;padding:12px 20px;border-radius:3px;font-family:var(--m3-font-mono);font-size:0.8rem;letter-spacing:0.06em;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;align-items:center;gap:10px;transform:translateY(20px);opacity:0;transition:all 0.25s ease;';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = '<span style="color:' + (color || 'var(--m3-accent)') + ';font-weight:700;">✓</span> ' + message;
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      clearTimeout(window.__m3ToastTimer);
+      window.__m3ToastTimer = setTimeout(function () {
+        toast.style.transform = 'translateY(20px)';
+        toast.style.opacity = '0';
+      }, 3500);
+    }
+
+    // 5. Click-to-Copy Promo Code (M3FIRST10) with Visual Feedback & Toast
     document.querySelectorAll('[data-copy-code]').forEach(function (pill) {
-      pill.addEventListener('click', function () {
+      pill.addEventListener('click', function (e) {
+        e.preventDefault();
         const code = pill.getAttribute('data-copy-code') || 'M3FIRST10';
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(code);
@@ -182,6 +202,28 @@
           const orig = statusEl.textContent;
           statusEl.textContent = 'COPIED!';
           setTimeout(function () { statusEl.textContent = orig; }, 2000);
+        }
+        const tooltip = pill.querySelector('.m3-coupon-tooltip');
+        if (tooltip) {
+          tooltip.textContent = 'CODE COPIED: ' + code;
+          setTimeout(function () { tooltip.textContent = 'CLICK TO COPY CODE'; }, 2500);
+        }
+        showToast('PROMO CODE <strong>' + code + '</strong> COPIED TO CLIPBOARD! (10% OFF FIRST PROJECT)', '#C5E800');
+      });
+    });
+
+    // 5B. Banner Category Hotspot Triggers (Videography, Branding, Graphic Design, Content Creation)
+    document.querySelectorAll('[data-filter-trigger]').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        const cat = trigger.getAttribute('data-filter-trigger');
+        const targetBtn = document.querySelector('.m3-filter-btn[data-filter="' + cat + '"]');
+        if (targetBtn) {
+          e.preventDefault();
+          targetBtn.click();
+          const targetSection = document.querySelector('.m3-projects-section');
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       });
     });

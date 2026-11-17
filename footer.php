@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $uri = get_template_directory_uri();
 ?>
 
-<footer class="m3-footer" id="site-footer">
+<footer class="m3-footer accent-<?php echo esc_attr( m3_zone_accent( 'footer', 'red' ) ); ?>" id="site-footer">
     <div class="m3-container">
         <div class="m3-footer-grid">
             <!-- Col 1: Brand & Socials -->

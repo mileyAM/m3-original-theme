@@ -80,42 +80,9 @@ $uri = get_template_directory_uri();
         </div>
     </section>
 
-    <!-- 3. Electric Blue Banner ("YOUR VISION. OUR CREATION. WHY WORK WITH US?") -->
-    <section class="m3-color-banner accent-blue" style="background-image: url('<?php echo esc_url( $uri . '/assets/images/banners/plate-blue-your-vision.jpg' ); ?>');">
-        <div class="m3-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1.25fr 0.75fr 1fr;gap:24px;align-items:center;">
-            <div>
-                <span class="m3-banner-badge">MILEYM<span class="three">3</span>DIA</span>
-                <h2 class="m3-banner-headline">
-                    YOUR VISION.<br>
-                    OUR <span class="accent">CREATION.</span>
-                </h2>
-                <div style="font-family:var(--m3-font-wide);font-size:1.15rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">
-                    LIMITLESS POSSIBILITIES.
-                </div>
-                <p style="font-family:var(--m3-font-mono);font-size:0.72rem;letter-spacing:0.1em;color:var(--m3-text-muted);margin-bottom:18px;">
-                    PHOTOGRAPHY • VIDEO PRODUCTION • BRANDING • MUSIC PRODUCTION
-                </p>
-                <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>" class="m3-btn m3-btn-outline-accent m3-btn-sm">
-                    LET'S BRING YOUR VISION TO LIFE.
-                </a>
-            </div>
-            <div></div>
-            <div style="background:rgba(5,8,16,0.88);border:1px solid rgba(0,136,255,0.42);padding:24px;border-radius:2px;">
-                <h3 style="font-family:var(--m3-font-display);font-size:1.05rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">
-                    WHY WORK WITH US?
-                </h3>
-                <ul class="m3-banner-checklist">
-                    <li><?php echo m3_get_svg_icon( 'check' ); ?> CREATIVE &amp; STRATEGIC APPROACH</li>
-                    <li><?php echo m3_get_svg_icon( 'check' ); ?> HIGH QUALITY &amp; PROFESSIONAL</li>
-                    <li><?php echo m3_get_svg_icon( 'check' ); ?> FAST TURNAROUND</li>
-                    <li><?php echo m3_get_svg_icon( 'check' ); ?> 100% SATISFACTION</li>
-                </ul>
-                <div class="m3-script-text" style="color:var(--m3-accent);font-size:1.85rem;margin-top:8px;">
-                    Let's Create Greatness.
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- 3. Master Royal Blue Banner ("YOUR VISION. OUR CREATION. LIMITLESS POSSIBILITIES.")
+         Full uncropped banner with clickable [LET'S BRING YOUR VISION TO LIFE] button and checklist overlay -->
+    <?php m3_render_master_banner( 'blue' ); ?>
 
     <!-- 4. Creative Leadership & Studio Team (Crisp High-Res Studio Imagery) -->
     <section class="m3-services-section" id="team">

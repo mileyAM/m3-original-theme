@@ -28,6 +28,7 @@ if ( 'project' === $current_page ) {
 } elseif ( 'single' === $current_page ) {
     $nav_active_group = 'blog';
 }
+$page_accent = m3_get_page_accent( $nav_active_group );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -37,7 +38,7 @@ if ( 'project' === $current_page ) {
     <meta name="description" content="<?php echo esc_attr( m3_mod( 'm3_hero_desc', 'MILEYM3DIA (M3) — Creative Agency, Music Production, Artist Development & Digital Media Production.' ) ); ?>">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class( 'accent-' . m3_zone_accent( 'header', 'red' ) ); ?> data-current-page="<?php echo esc_attr( $nav_active_group ); ?>">
+<body <?php body_class( 'page-theme-' . $page_accent . ' accent-' . $page_accent ); ?> data-current-page="<?php echo esc_attr( $nav_active_group ); ?>" data-page-accent="<?php echo esc_attr( $page_accent ); ?>">
 <?php if ( function_exists( 'wp_body_open' ) ) { wp_body_open(); } ?>
 
 <header class="m3-header" id="site-header">

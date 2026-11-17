@@ -16,35 +16,9 @@ $active_filter = isset( $_GET['filter'] ) ? sanitize_text_field( wp_unslash( $_G
 
 <main id="primary" class="site-main">
 
-    <!-- Purple Banner ("VISUALS THAT SPEAK. BRANDING THAT STICKS. CONTENT THAT CONNECTS.") -->
-    <section class="m3-color-banner accent-purple" style="background-image: url('<?php echo esc_url( $uri . '/assets/images/banners/plate-purple-visuals-speak.jpg' ); ?>');padding:68px 0;">
-        <div class="m3-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr 0.85fr;gap:24px;align-items:center;">
-            <div>
-                <span class="m3-banner-badge">MILEYM<span class="three">3</span>DIA PORTFOLIO</span>
-                <h1 class="m3-banner-headline">
-                    VISUALS<br>
-                    THAT<br>
-                    <span class="accent">SPEAK.</span>
-                </h1>
-                <p style="font-family:var(--m3-font-display);font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;">
-                    BRANDING THAT STICKS.<br>CONTENT THAT CONNECTS.
-                </p>
-                <a href="<?php echo esc_url( m3_page_url( 'contact' ) ); ?>" class="m3-btn m3-btn-outline-accent m3-btn-sm">
-                    WORK WITH US
-                </a>
-            </div>
-            <div></div>
-            <div style="text-align:right;">
-                <div style="display:inline-block;text-align:left;background:rgba(8,6,14,0.86);border:1px solid rgba(157,78,221,0.45);padding:20px 24px;border-radius:2px;">
-                    <div style="font-family:var(--m3-font-display);font-size:1.3rem;font-weight:700;text-transform:uppercase;line-height:1.25;">
-                        HIGH QUALITY<br>
-                        <span style="color:var(--m3-accent);">VISUALS.</span><br>
-                        REAL RESULTS.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Master Acid Lime Green Banner ("BIG IDEAS. BOLD CONTENT. REAL IMPACT.")
+         Full uncropped banner with clickable category icons and 10% off coupon code overlay -->
+    <?php m3_render_master_banner( 'green' ); ?>
 
     <!-- Portfolio Grid with Category Filters (Symmetrical 4x2 Grid Opening Dedicated Project Pages) -->
     <section class="m3-projects-section">
