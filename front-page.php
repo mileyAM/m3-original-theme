@@ -318,7 +318,7 @@ $blog_posts   = m3_get_blog_posts_data();
                                 <?php if ( ! empty( $post_item['tags'] ) ) : ?>
                                     <div class="m3-blog-card-tags">
                                         <?php foreach ( array_slice( $post_item['tags'], 0, 3 ) as $tag_label ) : ?>
-                                            <a href="<?php echo esc_url( m3_page_url( 'blog' ) . '&tag=' . rawurlencode( ltrim( $tag_label, '#' ) ) ); ?>" class="m3-tag-chip">
+                                            <a href="<?php echo esc_url( m3_url_with_query( 'blog', array( 'tag' => ltrim( $tag_label, '#' ) ) ) ); ?>" class="m3-tag-chip">
                                                 <?php echo esc_html( $tag_label ); ?>
                                             </a>
                                         <?php endforeach; ?>

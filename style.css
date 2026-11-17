@@ -52,10 +52,6 @@ Tags: dark, custom-logo, custom-menu, featured-images, full-site-editing, block-
   --m3-gold-hover: #FAFF4D;
   --m3-gold-glow: rgba(245, 255, 0, 0.30);
 
-  --m3-gold: #FFB800;
-  --m3-gold-hover: #FFC933;
-  --m3-gold-glow: rgba(255, 184, 0, 0.30);
-
   /* Default active accent (can be overridden per section) */
   --m3-accent: var(--m3-red);
   --m3-accent-hover: var(--m3-red-hover);
@@ -109,10 +105,10 @@ Tags: dark, custom-logo, custom-menu, featured-images, full-site-editing, block-
   --m3-accent-glow: var(--m3-purple-glow);
   --m3-accent-text-on-solid: #FFFFFF;
 }
-.accent-gold {
-  --m3-accent: var(--m3-gold);
-  --m3-accent-hover: var(--m3-gold-hover);
-  --m3-accent-glow: var(--m3-gold-glow);
+.accent-cyan {
+  --m3-accent: var(--m3-cyan);
+  --m3-accent-hover: var(--m3-cyan-hover);
+  --m3-accent-glow: var(--m3-cyan-glow);
   --m3-accent-text-on-solid: #070709;
 }
 
@@ -1922,9 +1918,8 @@ ul {
 .m3-post-featured-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(6, 6, 10, 0.88) 0%, rgba(6, 6, 10, 0.62) 52%, rgba(6, 6, 10, 0.34) 100%),
-    linear-gradient(180deg, rgba(6, 6, 10, 0.28) 0%, rgba(7, 7, 10, 0.92) 100%);
+  background: rgba(7, 7, 10, 0.40);
+  background-image: linear-gradient(180deg, rgba(7, 7, 10, 0.15) 0%, rgba(7, 7, 10, 0.55) 100%);
   z-index: 1;
 }
 
@@ -2830,6 +2825,186 @@ ul {
   width: 100%;
   overflow: hidden;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
+}
+
+/* ==========================================================================
+   STUDIO GEAR & SOFTWARE STACK + CONTACT QUICK-SCOPE ESTIMATOR
+   ========================================================================== */
+.m3-gear-section {
+  padding: 72px 0;
+  background: #060609;
+  border-top: 1px solid var(--m3-border);
+  border-bottom: 1px solid var(--m3-border);
+}
+
+.m3-gear-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.m3-gear-card {
+  background: var(--m3-bg-card);
+  border: 1px solid var(--m3-border-strong);
+  border-top: 3px solid var(--m3-accent, var(--m3-red));
+  border-radius: 2px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform var(--m3-transition), border-color var(--m3-transition);
+}
+
+.m3-gear-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--m3-accent, var(--m3-red));
+}
+
+.m3-gear-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.m3-gear-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--m3-accent, var(--m3-red));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.m3-gear-title {
+  font-family: var(--m3-font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.m3-gear-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.m3-gear-list li {
+  font-family: var(--m3-font-mono);
+  font-size: 0.74rem;
+  color: var(--m3-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.m3-gear-list li::before {
+  content: '▪';
+  color: var(--m3-accent, var(--m3-red));
+  font-size: 0.8rem;
+}
+
+/* Contact Quick-Scope Estimator (Smaller Jobs & Fast Turnaround) */
+.m3-estimator-card {
+  background: #0D0D13;
+  border: 1px solid var(--m3-border-strong);
+  border-top: 3px solid var(--m3-cyan);
+  border-radius: 2px;
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+.m3-estimator-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.m3-scope-pill {
+  background: #13131C;
+  border: 1px solid var(--m3-border-strong);
+  border-left: 3px solid var(--m3-accent, var(--m3-cyan));
+  border-radius: 2px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--m3-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.m3-scope-pill:hover {
+  border-color: var(--m3-accent, var(--m3-cyan));
+  background: #181824;
+}
+
+.m3-scope-pill.selected {
+  border-color: var(--m3-accent, var(--m3-cyan));
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.14);
+}
+
+.m3-scope-pill-title {
+  font-family: var(--m3-font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.m3-scope-pill-meta {
+  font-family: var(--m3-font-mono);
+  font-size: 0.7rem;
+  color: var(--m3-accent, var(--m3-cyan));
+}
+
+.m3-estimator-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(6, 6, 9, 0.85);
+  border: 1px solid var(--m3-border);
+  border-radius: 2px;
+}
+
+.m3-estimator-stat-val {
+  font-family: var(--m3-font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--m3-green);
+}
+
+@media (max-width: 1120px) {
+  .m3-gear-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .m3-estimator-pills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .m3-gear-grid,
+  .m3-estimator-pills {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================

@@ -37,6 +37,66 @@ if ( $notice ) {
                 </div>
             <?php endif; ?>
 
+            <!-- Interactive Quick-Scope & Smaller-Job Estimator -->
+            <div class="m3-estimator-card" id="m3-scope-estimator">
+                <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                    <div>
+                        <div class="m3-eyebrow" style="margin-bottom:4px;">QUICK-SCOPE ESTIMATOR • SMALLER JOBS &amp; FAST TURNAROUND</div>
+                        <h2 class="m3-section-title" style="font-size:1.55rem;">NEED A <span style="color:var(--m3-cyan);">LOGO, EDIT, OR SINGLE TRACK?</span></h2>
+                    </div>
+                    <span style="font-family:var(--m3-font-mono);font-size:0.72rem;color:var(--m3-text-muted);">
+                        CLICK ONE OR MORE ITEMS TO AUTO-FILL YOUR BRIEF ↓
+                    </span>
+                </div>
+
+                <div class="m3-estimator-pills" role="group" aria-label="Select Project Scope">
+                    <button type="button" class="m3-scope-pill accent-purple" data-scope-name="Logo & Brand Kit" data-scope-min="250" data-scope-max="450" data-scope-days="3–4 Days" data-scope-service="Branding & Graphic Design">
+                        <span class="m3-scope-pill-title">LOGO &amp; BRAND KIT</span>
+                        <span class="m3-scope-pill-meta">$250–$450 • 3–4 Days</span>
+                    </button>
+                    <button type="button" class="m3-scope-pill accent-yellow" data-scope-name="Cover Art / Flyer" data-scope-min="125" data-scope-max="250" data-scope-days="48 Hours" data-scope-service="Branding & Graphic Design">
+                        <span class="m3-scope-pill-title">COVER ART / FLYER</span>
+                        <span class="m3-scope-pill-meta">$125–$250 • 48 Hours</span>
+                    </button>
+                    <button type="button" class="m3-scope-pill accent-cyan" data-scope-name="Web / WordPress UI Edit" data-scope-min="199" data-scope-max="499" data-scope-days="2–3 Days" data-scope-service="Content Creation & Video Editing">
+                        <span class="m3-scope-pill-title">WEB / UI EDIT &amp; FIX</span>
+                        <span class="m3-scope-pill-meta">$199–$499 • 2–3 Days</span>
+                    </button>
+                    <button type="button" class="m3-scope-pill accent-red" data-scope-name="Short-Form Video Edit" data-scope-min="175" data-scope-max="350" data-scope-days="48–72 Hours" data-scope-service="Content Creation & Video Editing">
+                        <span class="m3-scope-pill-title">SHORT-FORM VIDEO EDIT</span>
+                        <span class="m3-scope-pill-meta">$175–$350 • 48–72 Hours</span>
+                    </button>
+                    <button type="button" class="m3-scope-pill accent-green" data-scope-name="Mix & Master / Custom Beat" data-scope-min="150" data-scope-max="350" data-scope-days="2–4 Days" data-scope-service="Music Production & Mixing">
+                        <span class="m3-scope-pill-title">MIX &amp; MASTER / BEAT</span>
+                        <span class="m3-scope-pill-meta">$150–$350 • 2–4 Days</span>
+                    </button>
+                    <button type="button" class="m3-scope-pill accent-blue" data-scope-name="Small-Crew Shoot (2HR)" data-scope-min="499" data-scope-max="699" data-scope-days="3–5 Days" data-scope-service="Videography & Music Video">
+                        <span class="m3-scope-pill-title">SMALL-CREW SHOOT (2HR)</span>
+                        <span class="m3-scope-pill-meta">$499–$699 • 3–5 Days</span>
+                    </button>
+                </div>
+
+                <div class="m3-estimator-summary">
+                    <div>
+                        <div style="font-family:var(--m3-font-mono);font-size:0.68rem;color:var(--m3-text-dim);letter-spacing:0.1em;">SELECTED SCOPE</div>
+                        <div id="m3-est-scope-label" style="font-family:var(--m3-font-display);font-size:1rem;color:#fff;margin-top:2px;">Click any job pill above to estimate</div>
+                    </div>
+                    <div style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;">
+                        <div>
+                            <div style="font-family:var(--m3-font-mono);font-size:0.68rem;color:var(--m3-text-dim);letter-spacing:0.1em;">ESTIMATED RANGE</div>
+                            <div class="m3-estimator-stat-val" id="m3-est-price">$0</div>
+                        </div>
+                        <div>
+                            <div style="font-family:var(--m3-font-mono);font-size:0.68rem;color:var(--m3-text-dim);letter-spacing:0.1em;">TURNAROUND</div>
+                            <div id="m3-est-time" style="font-family:var(--m3-font-display);font-size:1.15rem;color:var(--m3-cyan);font-weight:700;">—</div>
+                        </div>
+                        <button type="button" id="m3-est-apply-btn" class="m3-btn m3-btn-outline-accent accent-cyan m3-btn-sm">
+                            APPLY TO BRIEF ↓
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="m3-auth-wrap" style="min-height:auto;padding:0;align-items:stretch;">
                 <!-- Left: Contact Form -->
                 <div class="m3-auth-card">

@@ -48,49 +48,30 @@ if ( empty( $filtered_posts ) ) {
     $filtered_posts = $all_posts;
 }
 
-$lead_post = $filtered_posts[0];
 ?>
 
 <main id="primary" class="site-main">
 
     <!-- ====================================================================
-         1. FEATURED POST HERO HEADER (Uses Lead Post Featured Image + Dark Overlay)
+         1. BLOG ARCHIVE HERO HEADER (Dedicated Studio Banner + 40% Dark Overlay)
          ==================================================================== -->
-    <section class="m3-post-featured-header accent-<?php echo esc_attr( $lead_post['accent'] ); ?>"
-             style="background-image: url('<?php echo esc_url( $lead_post['image'] ); ?>');">
+    <section class="m3-post-featured-header accent-cyan"
+             style="background-image: url('<?php echo esc_url( $uri . '/assets/images/banners/plate-blue-your-vision.jpg' ); ?>');">
         <div class="m3-post-featured-overlay" aria-hidden="true"></div>
         <div class="m3-container m3-post-featured-inner">
             <div class="m3-post-featured-top">
                 <span class="m3-banner-badge">05 • M<span class="three">3</span> BLOG &amp; STUDIO INSIGHTS</span>
-                <span class="m3-blog-cat-pill"><?php echo esc_html( $lead_post['category'] ); ?></span>
-                <span class="m3-blog-readtime-pill">⏱ <?php echo esc_html( $lead_post['read_time'] ); ?></span>
-                <span class="m3-post-header-date"><?php echo esc_html( $lead_post['date'] . ' • BY ' . $lead_post['author'] ); ?></span>
+                <span class="m3-blog-cat-pill">CREATIVE JOURNAL</span>
+                <span class="m3-blog-readtime-pill"><?php echo count( $all_posts ); ?> ARTICLES</span>
             </div>
 
             <h1 class="m3-post-featured-title">
-                <a href="<?php echo esc_url( m3_post_url( $lead_post['id'] ) ); ?>">
-                    <?php echo esc_html( $lead_post['title'] ); ?>
-                </a>
+                STUDIO <span style="color:var(--m3-cyan);">INSIGHTS</span> &amp; BEHIND THE <span style="color:var(--m3-red);">SCENES.</span>
             </h1>
 
             <p class="m3-post-featured-excerpt">
-                <?php echo esc_html( $lead_post['excerpt'] ); ?>
+                Deep dives from the MILEYM3DIA collective on WordPress web development, NLE video editing &amp; color grading, music production, small-crew shoots, and artist branding.
             </p>
-
-            <div class="m3-post-featured-footer">
-                <a href="<?php echo esc_url( m3_post_url( $lead_post['id'] ) ); ?>" class="m3-btn m3-btn-primary">
-                    READ FEATURED ARTICLE →
-                </a>
-                <?php if ( ! empty( $lead_post['tags'] ) ) : ?>
-                    <div class="m3-blog-card-tags">
-                        <?php foreach ( $lead_post['tags'] as $tag_label ) : ?>
-                            <a href="<?php echo esc_url( m3_page_url( 'blog' ) . '&tag=' . rawurlencode( ltrim( $tag_label, '#' ) ) ); ?>" class="m3-tag-chip">
-                                <?php echo esc_html( $tag_label ); ?>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
         </div>
     </section>
 
@@ -105,7 +86,7 @@ $lead_post = $filtered_posts[0];
                     ALL ARTICLES (<?php echo count( $all_posts ); ?>)
                 </a>
                 <?php foreach ( $categories as $cat ) : ?>
-                    <a href="<?php echo esc_url( m3_page_url( 'blog' ) . '&cat=' . rawurlencode( $cat['slug'] ) ); ?>"
+                    <a href="<?php echo esc_url( m3_url_with_query( 'blog', array( 'cat' => $cat['slug'] ) ) ); ?>"
                        class="m3-filter-btn accent-<?php echo esc_attr( $cat['accent'] ); ?> <?php echo ( $active_cat === $cat['slug'] ) ? 'active' : ''; ?>">
                         <?php echo esc_html( $cat['name'] ); ?>
                     </a>
@@ -175,7 +156,7 @@ $lead_post = $filtered_posts[0];
                                     <?php if ( ! empty( $post_item['tags'] ) ) : ?>
                                         <div class="m3-blog-card-tags">
                                             <?php foreach ( $post_item['tags'] as $tag_label ) : ?>
-                                                <a href="<?php echo esc_url( m3_page_url( 'blog' ) . '&tag=' . rawurlencode( ltrim( $tag_label, '#' ) ) ); ?>" class="m3-tag-chip">
+                                                <a href="<?php echo esc_url( m3_url_with_query( 'blog', array( 'tag' => ltrim( $tag_label, '#' ) ) ) ); ?>" class="m3-tag-chip">
                                                     <?php echo esc_html( $tag_label ); ?>
                                                 </a>
                                             <?php endforeach; ?>

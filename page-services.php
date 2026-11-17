@@ -193,6 +193,34 @@ $packages = m3_get_packages_data();
         </div>
     </section>
 
+    <!-- Studio Gear & Software Stack Strip -->
+    <section class="m3-gear-section" id="gear-stack">
+        <div class="m3-container">
+            <div class="m3-section-header">
+                <div>
+                    <div class="m3-eyebrow">IN-HOUSE ARSENAL</div>
+                    <h2 class="m3-section-title">STUDIO GEAR &amp; <span class="accent">SOFTWARE STACK</span></h2>
+                </div>
+            </div>
+
+            <div class="m3-gear-grid">
+                <?php foreach ( m3_get_gear_stack_data() as $gear ) : ?>
+                    <div class="m3-gear-card accent-<?php echo esc_attr( $gear['accent'] ); ?>">
+                        <div class="m3-gear-header">
+                            <div class="m3-gear-icon"><?php echo m3_get_svg_icon( $gear['icon'] ); ?></div>
+                            <h3 class="m3-gear-title"><?php echo esc_html( $gear['title'] ); ?></h3>
+                        </div>
+                        <ul class="m3-gear-list">
+                            <?php foreach ( $gear['tools'] as $tool ) : ?>
+                                <li><?php echo esc_html( $tool ); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <?php

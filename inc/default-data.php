@@ -472,8 +472,8 @@ function m3_get_blog_categories() {
         ),
         array(
             'slug'   => 'branding',
-            'name'   => 'BRANDING & IDENTITY',
-            'accent' => 'blue',
+            'name'   => 'BRANDING & WEB',
+            'accent' => 'cyan',
             'count'  => '07',
         ),
         array(
@@ -490,8 +490,8 @@ function m3_get_blog_categories() {
         ),
         array(
             'slug'   => 'cinematography',
-            'name'   => 'CINEMATOGRAPHY & COLOR',
-            'accent' => 'gold',
+            'name'   => 'VIDEO EDITING & COLOR',
+            'accent' => 'yellow',
             'count'  => '06',
         ),
         array(
@@ -507,7 +507,7 @@ function m3_get_blog_categories() {
  * Helper to generate link to a Single Blog Post
  */
 function m3_post_url( $post_id ) {
-    return m3_page_url( 'single' ) . '&post_id=' . intval( $post_id );
+    return m3_url_with_query( 'single', array( 'post_id' => intval( $post_id ) ) );
 }
 
 /**
@@ -539,11 +539,11 @@ function m3_get_blog_posts_data() {
             'read_time' => '4 MIN READ',
             'category'  => 'BRANDING & IDENTITY',
             'cat_slug'  => 'branding',
-            'accent'    => 'blue',
-            'author'    => 'M3 BRAND LAB',
-            'tags'      => array( '#BrandIdentity', '#VisualSystems', '#Typography', '#CreativeDirection' ),
-            'image'     => $uri . '/assets/images/blog/blog-2-brand-stand-out.jpg',
-            'excerpt'   => 'Why cohesive visual identity, sonic branding, and high-contrast campaign visuals separate market leaders from the noise.',
+            'accent'    => 'cyan',
+            'author'    => 'M3 BRAND & WEB LAB',
+            'tags'      => array( '#BrandIdentity', '#WebDev', '#Typography', '#CreativeDirection' ),
+            'image'     => $uri . '/assets/images/projects/project-web-dev.jpg',
+            'excerpt'   => 'Why cohesive visual identity, custom WordPress web development, and high-contrast campaign visuals separate market leaders from the noise.',
             'content'   => '<p>In a crowded digital landscape, generic templates kill momentum. To build a brand that sticks and content that converts, your visual and sonic identity must be unmistakable within the first 1.5 seconds of audience contact.</p><blockquote>"Your brand is the visual and emotional architecture that tells people why you matter before you say a word." — M3 Brand Lab</blockquote><h3>01. Architect a High-Contrast Visual System</h3><p>Whether a client discovers you through a 15-second reel, album cover art, product packaging, or your website, your typography, color palette, and grid discipline should immediately signal authority.</p><h3>02. Pair Visual Identity with Sonic Branding</h3><p>Audio is half the experience. Custom sound design, signature audio stingers, and studio-mixed voiceovers elevate brand recall by over 68% across digital video campaigns.</p><h3>03. Build Repeatable Campaign Templates</h3><p>We equip every MILEYM3DIA branding client with a modular style guide, custom motion graphics lower-thirds, and photography direction so every release feels unified and intentional.</p>',
         ),
         array(
@@ -582,12 +582,12 @@ function m3_get_blog_posts_data() {
             'title'     => 'THE POWER OF VISUAL STORYTELLING & CINEMA COLOR GRADING',
             'date'      => 'APR 11, 2024',
             'read_time' => '5 MIN READ',
-            'category'  => 'CINEMATOGRAPHY & COLOR',
+            'category'  => 'VIDEO EDITING & COLOR',
             'cat_slug'  => 'cinematography',
-            'accent'    => 'gold',
+            'accent'    => 'yellow',
             'author'    => 'M3 POST SUITE',
-            'tags'      => array( '#Cinematography', '#ColorGrading', '#DaVinciResolve', '#VisualStory' ),
-            'image'     => $uri . '/assets/images/blog/blog-3-visual-storytelling.jpg',
+            'tags'      => array( '#VideoEditing', '#ColorGrading', '#DaVinciResolve', '#VisualStory' ),
+            'image'     => $uri . '/assets/images/projects/project-video-editing-suite.jpg',
             'excerpt'   => 'How narrative-driven cinematography, intentional lens choices, and theatrical color grading turn viewers into lifelong fans.',
             'content'   => '<p>Audiences don\'t just buy products or stream songs—they buy into stories, worlds, and movements. Our mission at MILEYM3DIA is simple: bring ideas to life through powerful visuals that connect, inspire, and drive real results.</p><blockquote>"Lighting and color grading set the emotional temperature of a story before a single line of dialogue is spoken." — M3 Post Suite</blockquote><h3>01. Intentional Lens &amp; Lighting Architecture</h3><p>We pair vintage anamorphic and cinema prime glass with motivated key lighting to sculpt faces and create natural depth separation against dark, atmospheric studio environments.</p><h3>02. Theatrical Color Science in DaVinci Resolve</h3><p>Using node-based film emulation, halation control, and split-toning, we ensure every M3 production carries a distinct theatrical look across all displays.</p>',
         ),
@@ -652,3 +652,37 @@ function m3_get_blog_posts_data() {
 
     return $defaults;
 }
+
+/**
+ * Get Studio Gear & Software Stack Data (Editable via filter or Customizer)
+ */
+function m3_get_gear_stack_data() {
+    $stack = array(
+        array(
+            'title'  => 'WEB DEV & UI EDITING',
+            'accent' => 'cyan',
+            'icon'   => 'web',
+            'tools'  => array( 'WordPress Custom Themes', 'PHP 8+ & REST API', 'HTML5 / CSS3 / JS', 'Figma & UI Prototyping' ),
+        ),
+        array(
+            'title'  => 'VIDEO EDITING & COLOR',
+            'accent' => 'yellow',
+            'icon'   => 'editing',
+            'tools'  => array( 'DaVinci Resolve Studio', 'Adobe Premiere Pro', 'After Effects VFX', 'Custom Theatrical LUTs' ),
+        ),
+        array(
+            'title'  => 'MUSIC PRODUCTION & MIX',
+            'accent' => 'green',
+            'icon'   => 'music',
+            'tools'  => array( 'Pro Tools & Logic Pro', 'Ableton Live Suite', 'SSL & Neve 1073 Chain', 'Dolby Atmos Mastering' ),
+        ),
+        array(
+            'title'  => 'SMALL SHOOTS & CINEMA',
+            'accent' => 'red',
+            'icon'   => 'videography',
+            'tools'  => array( 'RED V-Raptor 8K', 'Sony FX3 / FX6 Rigs', 'Anamorphic Prime Glass', 'Portable RGBWW Lighting' ),
+        ),
+    );
+    return apply_filters( 'm3_gear_stack_data', $stack );
+}
+

@@ -209,4 +209,82 @@
       });
     });
   });
+
+  // =========================================================================
+  // 8. CONTACT PAGE QUICK-SCOPE & SMALLER-JOB ESTIMATOR
+  // =========================================================================
+  const estimator = document.getElementById('m3-scope-estimator');
+  if (estimator) {
+    const pills = estimator.querySelectorAll('.m3-scope-pill');
+    const labelEl = document.getElementById('m3-est-scope-label');
+    const priceEl = document.getElementById('m3-est-price');
+    const timeEl = document.getElementById('m3-est-time');
+    const applyBtn = document.getElementById('m3-est-apply-btn');
+
+    const updateEstimator = () => {
+      const selected = Array.from(pills).filter((p) => p.classList.contains('selected'));
+      if (selected.length === 0) {
+        if (labelEl) labelEl.textContent = 'Click any job pill above to estimate';
+        if (priceEl) priceEl.textContent = '$0';
+        if (timeEl) timeEl.textContent = '—';
+        return;
+      }
+
+      let minTotal = 0;
+      let maxTotal = 0;
+      const names = [];
+      const times = [];
+
+      selected.forEach((btn) => {
+        names.push(btn.getAttribute('data-scope-name'));
+        minTotal += parseInt(btn.getAttribute('data-scope-min') || '0', 10);
+        maxTotal += parseInt(btn.getAttribute('data-scope-max') || '0', 10);
+        times.push(btn.getAttribute('data-scope-days'));
+      });
+
+      if (labelEl) labelEl.textContent = names.join(' + ');
+      if (priceEl) priceEl.textContent = `$${minTotal}–$${maxTotal}`;
+      if (timeEl) timeEl.textContent = selected.length === 1 ? times[0] : '3–5 Days';
+    };
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pill.classList.toggle('selected');
+        updateEstimator();
+      });
+    });
+
+    if (applyBtn) {
+      applyBtn.addEventListener('click', () => {
+        const selected = Array.from(pills).filter((p) => p.classList.contains('selected'));
+        if (selected.length === 0) return;
+
+        const names = selected.map((b) => b.getAttribute('data-scope-name'));
+        const firstService = selected[0].getAttribute('data-scope-service');
+        const priceRange = priceEl ? priceEl.textContent : '';
+        const turnaround = timeEl ? timeEl.textContent : '';
+
+        const serviceSelect = document.getElementById('contact-service');
+        const detailsField = document.getElementById('contact-details');
+
+        if (serviceSelect && firstService) {
+          Array.from(serviceSelect.options).forEach((opt) => {
+            if (opt.value === firstService) opt.selected = true;
+          });
+        }
+
+        if (detailsField) {
+          const summaryLine = `Quick-Scope Estimate: ${names.join(' + ')} (${priceRange}, est. ${turnaround}).\n\nProject notes: `;
+          if (!detailsField.value.includes('Quick-Scope Estimate:')) {
+            detailsField.value = summaryLine + detailsField.value;
+          } else {
+            detailsField.value = detailsField.value.replace(/Quick-Scope Estimate:.*\n\n/, summaryLine);
+          }
+          detailsField.focus();
+          detailsField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+  }
 })();
+
