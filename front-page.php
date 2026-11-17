@@ -108,12 +108,12 @@ $blog_posts   = m3_get_blog_posts_data();
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_2_num', '100+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_2_label', 'HAPPY CLIENTS' ) ); ?></div>
                 </div>
-                <div class="m3-stat-box stat-blue">
+                <div class="m3-stat-box stat-cyan">
                     <div class="m3-stat-icon"><?php echo m3_get_svg_icon( 'award' ); ?></div>
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_3_num', '5+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_3_label', 'YEARS OF EXPERIENCE' ) ); ?></div>
                 </div>
-                <div class="m3-stat-box stat-green">
+                <div class="m3-stat-box stat-yellow">
                     <div class="m3-stat-icon"><?php echo m3_get_svg_icon( 'eye' ); ?></div>
                     <div class="m3-stat-num"><?php echo esc_html( m3_mod( 'm3_stat_4_num', '10M+' ) ); ?></div>
                     <div class="m3-stat-label"><?php echo esc_html( m3_mod( 'm3_stat_4_label', 'VIEWS GENERATED' ) ); ?></div>
@@ -196,6 +196,7 @@ $blog_posts   = m3_get_blog_posts_data();
 
                 <div class="m3-filter-tabs" role="tablist" aria-label="Filter Portfolio Projects">
                     <button type="button" class="m3-filter-btn active" data-filter="all">ALL</button>
+                    <button type="button" class="m3-filter-btn" data-filter="web">WEB DEV</button>
                     <button type="button" class="m3-filter-btn" data-filter="video">VIDEO</button>
                     <button type="button" class="m3-filter-btn" data-filter="photo">PHOTO</button>
                     <button type="button" class="m3-filter-btn" data-filter="branding">BRANDING</button>
@@ -349,12 +350,16 @@ $blog_posts   = m3_get_blog_posts_data();
             </div>
 
             <div class="m3-testimonials-grid">
-                <?php foreach ( $testimonials as $t ) : ?>
-                    <div class="m3-testimonial-card">
+                <?php
+                $test_accents = array( 'cyan', 'purple', 'green' );
+                foreach ( $testimonials as $idx => $t ) :
+                    $t_accent = $test_accents[ $idx % count( $test_accents ) ];
+                    ?>
+                    <div class="m3-testimonial-card accent-<?php echo esc_attr( $t_accent ); ?>">
                         <div>
                             <div class="m3-quote-icon">
                                 <span>“</span>
-                                <span style="font-family:var(--m3-font-mono);font-size:0.75rem;color:var(--m3-green);letter-spacing:0.1em;">★★★★★</span>
+                                <span style="font-family:var(--m3-font-mono);font-size:0.75rem;color:var(--m3-accent);letter-spacing:0.1em;">★★★★★</span>
                             </div>
                             <p class="m3-testimonial-text"><?php echo esc_html( $t['quote'] ); ?></p>
                         </div>
@@ -387,27 +392,31 @@ $blog_posts   = m3_get_blog_posts_data();
             </div>
 
             <div class="m3-pricing-grid">
-                <?php foreach ( $packages as $pkg ) : ?>
-                    <div class="m3-pricing-card <?php echo $pkg['featured'] ? 'featured' : ''; ?>">
+                <?php
+                $pkg_accents = array( 'cyan', 'red', 'yellow' );
+                foreach ( $packages as $idx => $pkg ) :
+                    $p_accent = $pkg_accents[ $idx % count( $pkg_accents ) ];
+                    ?>
+                    <div class="m3-pricing-card accent-<?php echo esc_attr( $p_accent ); ?> <?php echo $pkg['featured'] ? 'featured' : ''; ?>">
                         <?php if ( ! empty( $pkg['badge'] ) ) : ?>
                             <span class="m3-popular-badge"><?php echo esc_html( $pkg['badge'] ); ?></span>
                         <?php endif; ?>
                         <div>
-                            <div class="m3-pricing-tier"><?php echo esc_html( $pkg['name'] ); ?></div>
+                            <div class="m3-pricing-tier" style="color:var(--m3-accent);"><?php echo esc_html( $pkg['name'] ); ?></div>
                             <div class="m3-pricing-price">
                                 <?php echo esc_html( $pkg['price'] ); ?><small><?php echo esc_html( $pkg['unit'] ); ?></small>
                             </div>
                             <ul class="m3-pricing-features">
                                 <?php foreach ( $pkg['features'] as $feat ) : ?>
                                     <li>
-                                        <span class="check">✓</span>
+                                        <span class="check" style="color:var(--m3-accent);">✓</span>
                                         <span><?php echo esc_html( $feat ); ?></span>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
-                        <a href="<?php echo esc_url( m3_page_url( 'portal' ) . '&package=' . rawurlencode( $pkg['name'] ) ); ?>"
-                           class="m3-btn <?php echo $pkg['featured'] ? 'm3-btn-primary' : 'm3-btn-outline'; ?>" style="width:100%;">
+                        <a href="<?php echo esc_url( m3_url_with_query( 'portal', array( 'package' => $pkg['name'] ) ) ); ?>"
+                           class="m3-btn <?php echo $pkg['featured'] ? 'm3-btn-primary' : 'm3-btn-outline-accent'; ?>" style="width:100%;">
                             SELECT <?php echo esc_html( $pkg['name'] ); ?>
                         </a>
                     </div>

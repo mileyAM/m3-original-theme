@@ -64,7 +64,7 @@ if ( 'project' === $current_page ) {
                         <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#photography">Photography <span>→</span></a>
                         <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#branding">Branding <span>→</span></a>
                         <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#graphic">Graphic Design <span>→</span></a>
-                        <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#content">Content Creation <span>→</span></a>
+                        <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#web">Web Dev &amp; UI Editing <span>→</span></a>
                         <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#editing">Video Editing <span>→</span></a>
                         <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#music">Music Production <span>→</span></a>
                         <a href="<?php echo esc_url( m3_page_url( 'services' ) ); ?>#artist">Artist Development <span>→</span></a>
@@ -76,11 +76,11 @@ if ( 'project' === $current_page ) {
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
                     </a>
                     <div class="m3-dropdown">
-                        <a href="<?php echo esc_url( m3_page_url( 'work' ) ); ?>&filter=all">All Projects <span>→</span></a>
-                        <a href="<?php echo esc_url( m3_page_url( 'work' ) ); ?>&filter=video">Video Projects <span>→</span></a>
-                        <a href="<?php echo esc_url( m3_page_url( 'work' ) ); ?>&filter=photo">Photo Projects <span>→</span></a>
-                        <a href="<?php echo esc_url( m3_page_url( 'work' ) ); ?>&filter=branding">Branding Projects <span>→</span></a>
-                        <a href="<?php echo esc_url( m3_page_url( 'work' ) ); ?>&filter=music">Music / Audio Production <span>→</span></a>
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'all' ) ) ); ?>">All Projects <span>→</span></a>
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'video' ) ) ); ?>">Video Editing &amp; Shoots <span>→</span></a>
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'web' ) ) ); ?>">Web Dev &amp; Digital <span>→</span></a>
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'branding' ) ) ); ?>">Branding &amp; Design <span>→</span></a>
+                        <a href="<?php echo esc_url( m3_url_with_query( 'work', array( 'filter' => 'music' ) ) ); ?>">Music Production <span>→</span></a>
                     </div>
                 </li>
                 <li class="m3-nav-item <?php echo ( 'pricing' === $nav_active_group ) ? 'current-menu-item' : ''; ?>">

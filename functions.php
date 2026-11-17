@@ -92,6 +92,18 @@ function m3_page_url( $slug ) {
 }
 
 /**
+ * Helper to append query args safely to any M3 page URL
+ */
+function m3_url_with_query( $slug, $args = array() ) {
+    $base = m3_page_url( $slug );
+    if ( empty( $args ) ) {
+        return $base;
+    }
+    $sep = ( strpos( $base, '?' ) !== false ) ? '&' : '?';
+    return $base . $sep . http_build_query( $args );
+}
+
+/**
  * Auto-create the required Multi-Page WordPress Pages on Theme Activation
  * (01 Home, 02 About Us, 03 Services, 04 Work / Portfolio, Pricing, 05 Blog, 06 Contact,
  *  08 Privacy Policy, 09 Terms & Conditions, Login, Register, Client Portal)

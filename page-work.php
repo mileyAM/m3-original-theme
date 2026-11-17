@@ -57,6 +57,7 @@ $active_filter = isset( $_GET['filter'] ) ? sanitize_text_field( wp_unslash( $_G
 
                 <div class="m3-filter-tabs" role="tablist">
                     <button type="button" class="m3-filter-btn <?php echo ( 'all' === $active_filter ) ? 'active' : ''; ?>" data-filter="all">ALL PROJECTS</button>
+                    <button type="button" class="m3-filter-btn <?php echo ( 'web' === $active_filter ) ? 'active' : ''; ?>" data-filter="web">WEB DEV</button>
                     <button type="button" class="m3-filter-btn <?php echo ( 'video' === $active_filter ) ? 'active' : ''; ?>" data-filter="video">VIDEO PROJECTS</button>
                     <button type="button" class="m3-filter-btn <?php echo ( 'photo' === $active_filter ) ? 'active' : ''; ?>" data-filter="photo">PHOTO PROJECTS</button>
                     <button type="button" class="m3-filter-btn <?php echo ( 'branding' === $active_filter ) ? 'active' : ''; ?>" data-filter="branding">BRANDING PROJECTS</button>
