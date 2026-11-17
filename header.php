@@ -37,7 +37,7 @@ if ( 'project' === $current_page ) {
     <meta name="description" content="<?php echo esc_attr( m3_mod( 'm3_hero_desc', 'MILEYM3DIA (M3) — Creative Agency, Music Production, Artist Development & Digital Media Production.' ) ); ?>">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class( 'accent-red' ); ?> data-current-page="<?php echo esc_attr( $nav_active_group ); ?>">
+<body <?php body_class( 'accent-' . m3_zone_accent( 'header', 'red' ) ); ?> data-current-page="<?php echo esc_attr( $nav_active_group ); ?>">
 <?php if ( function_exists( 'wp_body_open' ) ) { wp_body_open(); } ?>
 
 <header class="m3-header" id="site-header">

@@ -26,21 +26,21 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          1. HERO SECTION (3-Stack Tier: WE CREATE / VISUALS / THAT HIT DIFFERENT.)
          ==================================================================== -->
-    <section class="m3-hero" id="hero-section" style="background-image: url('<?php echo esc_url( $uri . '/assets/images/sections/hero-composite-hd.jpg' ); ?>');">
+    <section class="m3-hero accent-<?php echo esc_attr( m3_zone_accent( 'hero', 'red' ) ); ?>" id="hero-section" style="background-image: url('<?php echo esc_url( $uri . '/assets/images/sections/hero-composite-hd.jpg' ); ?>');">
         <div class="m3-hero-overlay" aria-hidden="true"></div>
         <div class="m3-container">
             <div class="m3-hero-content">
                 <div class="m3-hero-kicker">
                     <span>CREATE <span class="sep">•</span> CAPTURE <span class="sep">•</span> ELEVATE</span>
                     <span style="opacity:0.4;">|</span>
-                    <span style="color:var(--m3-red);">M3 MUSIC &amp; VISUALS</span>
+                    <span style="color:var(--m3-accent);">M3 MUSIC &amp; VISUALS</span>
                 </div>
 
                 <!-- 3-Stack Tier Hero Headline -->
                 <h1 class="m3-hero-title m3-hero-stack">
                     <span class="m3-stack-tier tier-1"><?php echo esc_html( m3_mod( 'm3_hero_title_line1', 'WE CREATE' ) ); ?></span>
                     <span class="m3-stack-tier tier-2"><?php echo esc_html( m3_mod( 'm3_hero_title_line2', 'VISUALS' ) ); ?></span>
-                    <span class="m3-stack-tier tier-3 highlight-red"><?php echo esc_html( m3_mod( 'm3_hero_title_line3', 'THAT HIT DIFFERENT.' ) ); ?></span>
+                    <span class="m3-stack-tier tier-3" style="color:var(--m3-accent);"><?php echo esc_html( m3_mod( 'm3_hero_title_line3', 'THAT HIT DIFFERENT.' ) ); ?></span>
                 </h1>
 
                 <div class="m3-hero-sub">
@@ -80,7 +80,7 @@ $blog_posts   = m3_get_blog_posts_data();
             Reassessed Color Usage: Contrasting Carbon / Electric Blue & Neon Chartreuse
             to cleanly break up the Red Hero above from the sections below.
          ==================================================================== -->
-    <section class="m3-mission-stats accent-blue" id="mission-section">
+    <section class="m3-mission-stats accent-<?php echo esc_attr( m3_zone_accent( 'mission', 'blue' ) ); ?>" id="mission-section">
         <div class="m3-container m3-mission-grid">
             <div class="m3-mission-copy">
                 <div class="m3-eyebrow">
@@ -125,7 +125,7 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          3. WHAT WE DO / OUR SERVICES (Symmetrical 4x2 Grid of 8 Disciplines)
          ==================================================================== -->
-    <section class="m3-services-section" id="services-section">
+    <section class="m3-services-section accent-<?php echo esc_attr( m3_zone_accent( 'services', 'red' ) ); ?>" id="services-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>
@@ -156,7 +156,7 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          4. ABOUT US SPLIT ("CREATIVE MINDS. REAL IMPACT." — High-Res Studio Plates)
          ==================================================================== -->
-    <section class="m3-about-split" id="about-preview-section">
+    <section class="m3-about-split accent-<?php echo esc_attr( m3_zone_accent( 'about', 'green' ) ); ?>" id="about-preview-section">
         <div class="m3-container m3-about-grid">
             <div class="m3-about-visual-left">
                 <img src="<?php echo esc_url( $uri . '/assets/images/sections/about-hoodie-graphic.jpg' ); ?>" alt="MILEYM3DIA Studio Production & Visual Identity">
@@ -186,7 +186,7 @@ $blog_posts   = m3_get_blog_posts_data();
          5. FEATURED WORK / PORTFOLIO ("OUR LATEST PROJECTS")
             Symmetrical 3x2 Grid — Each card opens its own Single Project Page
          ==================================================================== -->
-    <section class="m3-projects-section" id="work-section">
+    <section class="m3-projects-section accent-<?php echo esc_attr( m3_zone_accent( 'work', 'purple' ) ); ?>" id="work-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>
@@ -245,7 +245,7 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          6. FROM THE BLOG ("LATEST INSIGHTS") — 6-Post Multi-Category Grid & Carousel (No Sidebar on Home)
          ==================================================================== -->
-    <section class="m3-blog-section m3-home-blog-section" id="blog-section">
+    <section class="m3-blog-section m3-home-blog-section accent-<?php echo esc_attr( m3_zone_accent( 'blog', 'blue' ) ); ?>" id="blog-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>
@@ -379,7 +379,7 @@ $blog_posts   = m3_get_blog_posts_data();
     <!-- ====================================================================
          8. SIMPLE PRICING ("PACKAGES THAT FIT YOUR NEEDS" — Symmetrical 3-Col Grid)
          ==================================================================== -->
-    <section class="m3-pricing-section" id="pricing-section">
+    <section class="m3-pricing-section accent-<?php echo esc_attr( m3_zone_accent( 'pricing', 'red' ) ); ?>" id="pricing-section">
         <div class="m3-container">
             <div class="m3-section-header">
                 <div>

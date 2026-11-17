@@ -140,5 +140,66 @@ function m3_customize_register( $wp_customize ) {
             'type'    => 'text',
         ) );
     }
+
+    // 5. MASTER COLOR PALETTE & PER-SECTION ELEMENT CONTROLS
+    $wp_customize->add_section( 'm3_colors_section', array(
+        'title'       => __( '05. M3 Colors & Element Controls', 'mileym3dia' ),
+        'description' => __( 'Control the 4 master brand colors and assign which color drives each section and UI element.', 'mileym3dia' ),
+        'priority'    => 25,
+    ) );
+
+    $color_pickers = array(
+        'm3_color_primary_red'     => array( 'Signature Red (Primary Brand)', '#E51923' ),
+        'm3_color_electric_purple' => array( 'Electric Purple (Creative / Work)', '#A838FF' ),
+        'm3_color_acid_green'      => array( 'Acid Lime Green (Content / Audio)', '#C5E800' ),
+        'm3_color_royal_blue'      => array( 'Royal Electric Blue (Vision / Tech)', '#1E6BFF' ),
+        'm3_color_bg_dark'         => array( 'Site Dark Canvas Background', '#060609' ),
+    );
+
+    foreach ( $color_pickers as $id => $cfg ) {
+        $wp_customize->add_setting( $id, array(
+            'default'           => $cfg[1],
+            'sanitize_callback' => 'sanitize_hex_color',
+        ) );
+        if ( class_exists( 'WP_Customize_Color_Control' ) ) {
+            $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $id, array(
+                'label'   => $cfg[0],
+                'section' => 'm3_colors_section',
+            ) ) );
+        }
+    }
+
+    $zone_choices = array(
+        'red'    => 'Signature Red',
+        'blue'   => 'Royal Electric Blue',
+        'purple' => 'Electric Purple',
+        'green'  => 'Acid Lime Green',
+    );
+
+    $zone_controls = array(
+        'm3_zone_header_accent'   => array( 'Header Nav Active Line & Buttons', 'red' ),
+        'm3_zone_hero_accent'     => array( 'Hero Headline & Primary CTA', 'red' ),
+        'm3_zone_mission_accent'  => array( 'Mission & Stats Zone', 'blue' ),
+        'm3_zone_services_accent' => array( 'Services Section Header', 'red' ),
+        'm3_zone_about_accent'    => array( 'About Us Split Zone', 'green' ),
+        'm3_zone_work_accent'     => array( 'Featured Work / Portfolio Zone', 'purple' ),
+        'm3_zone_blog_accent'     => array( 'From The Blog Zone', 'blue' ),
+        'm3_zone_pricing_accent'  => array( 'Pricing Featured Tier & Checks', 'red' ),
+        'm3_zone_footer_accent'   => array( 'Footer Border & Subscribe Button', 'red' ),
+    );
+
+    foreach ( $zone_controls as $id => $cfg ) {
+        $wp_customize->add_setting( $id, array(
+            'default'           => $cfg[1],
+            'sanitize_callback' => 'sanitize_key',
+        ) );
+        $wp_customize->add_control( $id, array(
+            'label'   => $cfg[0],
+            'section' => 'm3_colors_section',
+            'type'    => 'select',
+            'choices' => $zone_choices,
+        ) );
+    }
 }
 add_action( 'customize_register', 'm3_customize_register' );
+

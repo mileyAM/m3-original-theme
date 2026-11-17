@@ -19,6 +19,15 @@ function m3_mod( $key, $default = '' ) {
 }
 
 /**
+ * Helper to get Customizer-controlled accent class for any page section/zone
+ */
+function m3_zone_accent( $zone, $default = 'red' ) {
+    $allowed = array( 'red', 'blue', 'purple', 'green', 'cyan', 'yellow' );
+    $val     = get_theme_mod( 'm3_zone_' . $zone . '_accent', $default );
+    return in_array( $val, $allowed, true ) ? $val : $default;
+}
+
+/**
  * Render crisp SVG icons for Services, Stats, and UI elements
  */
 function m3_get_svg_icon( $name ) {

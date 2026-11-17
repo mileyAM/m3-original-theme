@@ -58,6 +58,26 @@ function m3_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'm3_enqueue_assets' );
 
 /**
+ * Output Customizer Master Color Variables in <head>
+ */
+function m3_customizer_dynamic_css() {
+    $red    = get_theme_mod( 'm3_color_primary_red', '#E51923' );
+    $purple = get_theme_mod( 'm3_color_electric_purple', '#A838FF' );
+    $green  = get_theme_mod( 'm3_color_acid_green', '#C5E800' );
+    $blue   = get_theme_mod( 'm3_color_royal_blue', '#1E6BFF' );
+    $bg     = get_theme_mod( 'm3_color_bg_dark', '#060609' );
+
+    echo "<style id=\"m3-customizer-css\">\n:root {\n";
+    echo '  --m3-red: ' . esc_attr( $red ) . ";\n";
+    echo '  --m3-purple: ' . esc_attr( $purple ) . ";\n";
+    echo '  --m3-green: ' . esc_attr( $green ) . ";\n";
+    echo '  --m3-blue: ' . esc_attr( $blue ) . ";\n";
+    echo '  --m3-bg: ' . esc_attr( $bg ) . ";\n";
+    echo "}\n</style>\n";
+}
+add_action( 'wp_head', 'm3_customizer_dynamic_css', 99 );
+
+/**
  * Register Right-Sided Blog Sidebar Widget Area
  */
 function m3_widgets_init() {

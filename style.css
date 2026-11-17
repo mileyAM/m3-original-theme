@@ -32,9 +32,9 @@ Tags: dark, custom-logo, custom-menu, featured-images, full-site-editing, block-
   --m3-yellow-hover: #FAFF4D;
   --m3-yellow-glow: rgba(245, 255, 0, 0.30);
 
-  --m3-green: #00FF66;
-  --m3-green-hover: #33FF85;
-  --m3-green-glow: rgba(0, 255, 102, 0.30);
+  --m3-green: #C5E800;
+  --m3-green-hover: #D9FF1A;
+  --m3-green-glow: rgba(197, 232, 0, 0.30);
 
   --m3-blue: #1E6BFF;
   --m3-blue-hover: #4787FF;
@@ -225,11 +225,11 @@ ul {
 
 .m3-section-title {
   font-family: var(--m3-font-display);
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.35rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.05;
+  letter-spacing: 0.015em;
+  line-height: 1.02;
   color: #FFFFFF;
 }
 
